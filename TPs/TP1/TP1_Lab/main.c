@@ -6,7 +6,7 @@ int SumarNumeros(int,int);
 int RestarNumeros(int,int);
 int MultiplicarNumeros(int,int);
 float DividirNumeros(float,int);
-int FactorizarNumero(int);
+long int FactorizarNumero(int);
 
 int main()
 {
@@ -17,7 +17,8 @@ int main()
     int multiplicar;
     float dividir;
     char cuentaRealizar;
-    int factorial;
+    int factorialA;
+    int factorialB;
     int opcion;
     char terminado;
 
@@ -33,7 +34,7 @@ int main()
         printf("Elija la opcion: ");
         scanf("%d", &opcion);
 
-        while(opcion!=1 & opcion!=2)
+        while(opcion!=1 && opcion!=2)
         {
             printf("Error, esa opcion no se encuentra disponible, reingrese la opcion que desee.\n");
             printf("\n1.Mostrar opciones de calculos\n2.Salir\n");
@@ -47,12 +48,12 @@ int main()
 
             case 1:
 
-                printf("Ingrese la cuenta que quiere realizar:\n");
+                printf("\nIngrese la cuenta que quiere realizar:\n");
                 printf("\ns(sumar)\nr(restar)\nm(multiplicar)\nd(dividir)\nf(factorizar)\n");
                 printf("\nElija una opcion: ");
                 fflush(stdin);
                 scanf("%c", &cuentaRealizar);
-                while(cuentaRealizar!='s' & cuentaRealizar!='r' & cuentaRealizar!='m' & cuentaRealizar!='d' & cuentaRealizar!='f')
+                while(cuentaRealizar!='s' && cuentaRealizar!='r' && cuentaRealizar!='m' && cuentaRealizar!='d' && cuentaRealizar!='f')
                 {
                     printf("Error, reingrese la cuenta que quiere realizar (s,r,m,d,f): ");
                     fflush(stdin);
@@ -70,8 +71,9 @@ int main()
 
                 if(cuentaRealizar=='f')
                 {
-                    factorial= FactorizarNumero(numeroUno);
-                    printf("El factorial de %d es %d\n , y el de %d es %d", numeroUno, factorial);
+                    factorialA= FactorizarNumero(numeroUno);
+                    factorialB= FactorizarNumero(numeroDos);
+                    printf("El factorial de %d es %d , y el de %d es %d\n", numeroUno, factorialA, numeroDos,factorialB);
                 }
 
 
@@ -172,7 +174,7 @@ float DividirNumeros(float primerNumeroDividir,int segundoNumeroDividir)
     return dividir;
 }
 
-int FactorizarNumero(int numeroFactorial)
+long int FactorizarNumero(int numeroFactorial)
 {
     int factorial;
 
