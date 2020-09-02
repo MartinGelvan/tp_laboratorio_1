@@ -33,7 +33,13 @@ int main()
         printf("Elija la opcion: ");
         scanf("%d", &opcion);
 
-
+        while(opcion!=1 & opcion!=2)
+        {
+            printf("Error, esa opcion no se encuentra disponible, reingrese la opcion que desee.\n");
+            printf("\n1.Mostrar opciones de calculos\n2.Salir\n");
+            printf("Elija la opcion: ");
+            scanf("%d", &opcion);
+        }
 
 
         switch(opcion)
@@ -89,17 +95,19 @@ int main()
 
                 if(cuentaRealizar=='d')
                 {
-                    if(numeroDos==0)
+                    while(numeroDos==0)
                     {
-                        printf("Error,No es posible dividir por 0, vuelva a ingresar un numero");
-                        scanf("%.2f",dividir);
+                        printf("Error,No es posible dividir por 0, vuelva a ingresar los numeros.\n");
+                        printf("Ingrese el primer numero: ");
+                        scanf("%d", &numeroUno);
+                        printf("Ingrese el segundo numero: ");
+                        scanf("%d", &numeroDos);
 
-
-                    }else
-                    {
-                        dividir= DividirNumeros(numeroUno,numeroDos);
-                        printf("La division de los numeros es de: %.2f\n", dividir);
                     }
+
+                    dividir= DividirNumeros(numeroUno,numeroDos);
+                    printf("La division de los numeros es de: %.2f\n", dividir);
+
 
                 }
             break;
