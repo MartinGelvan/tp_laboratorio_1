@@ -24,7 +24,11 @@ int main()
 
     while(terminado==0)
     {
-        printf("\n|1.Ingresar primer numero|\n|2.Ingresar segundo numero|\n|3.Calcular|\n|4.Mostrar operacion|\n|5.Salir|\n");
+        printf("\n|1.Ingresar 1er operando|\n");
+        printf("\n|2.Ingresar 2do operando|\n");
+        printf("\n|3.Calcular todas las operaciones|\n");
+        printf("\n|4.Informar resultados|\n");
+        printf("\n|5.Salir|\n");
         printf("\nElija la opcion: ");
         scanf("%d", &opcion);
 
@@ -58,6 +62,96 @@ int main()
 
 
                     factorialA= FactorizarNumero(numeroUno);
+                    factorialB= FactorizarNumero(numeroDos);
+
+
+
+                    suma= SumarNumeros(numeroUno,numeroDos);
+
+
+
+
+                    resta= RestarNumeros(numeroUno,numeroDos);
+
+
+
+
+                    multiplicar= MultiplicarNumeros(numeroUno,numeroDos);
+
+
+
+                    while(numeroDos==0)
+                    {
+                        printf("Error,No es posible dividir por 0, vuelva a ingresar los numeros.\n");
+                        printf("Ingrese el primer numero: ");
+                        scanf("%f", &numeroUno);
+                        printf("Ingrese el segundo numero: ");
+                        scanf("%f", &numeroDos);
+
+                    }
+
+                    dividir= DividirNumeros(numeroUno,numeroDos);
+
+
+
+            break;
+
+            case 4:
+
+
+                    suma= SumarNumeros(numeroUno,numeroDos);
+                    printf("\nEl resultado de %.2f+%.2f es: %.2f",numeroUno, numeroDos, suma);
+
+
+                    resta= RestarNumeros(numeroUno,numeroDos);
+                    printf("\nEl resultado de %.2f-%.2f es: %.2f",numeroUno, numeroDos, resta);
+
+
+
+                    multiplicar= MultiplicarNumeros(numeroUno,numeroDos);
+                    printf("\nEl resultado de %.2f*%.2f es: %.2f",numeroUno, numeroDos, multiplicar);
+
+
+
+                    while(numeroDos==0)
+                    {
+                        printf("Error,No es posible dividir por 0, vuelva a ingresar los numeros.\n");
+                        printf("Ingrese el primer numero: ");
+                        scanf("%f", &numeroUno);
+                        printf("Ingrese el segundo numero: ");
+                        scanf("%f", &numeroDos);
+
+                    }
+
+                    dividir= DividirNumeros(numeroUno,numeroDos);
+                    printf("\nEl resultado de %.2f/%.2f es: %.2f",numeroUno, numeroDos, dividir);
+
+                    factorialA= FactorizarNumero(numeroUno);
+                    factorialB= FactorizarNumero(numeroDos);
+                    printf("\nEl factorial de %.2f es: %d y El factorial de %.2f es: %d", numeroUno, factorialA, numeroDos,factorialB);
+
+
+
+            break;
+
+            case 5:
+                    printf("\nGracias por usar nuestra calculadora\n");
+                    terminado=1;
+            break;
+
+        }
+    }
+
+
+
+
+
+    return 0;
+
+}
+
+/*
+factorialA= FactorizarNumero(numeroUno);
                     factorialB= FactorizarNumero(numeroDos);
                     printf("\nEl factorial de %.2f es %d , y el de %.2f es %d\n", numeroUno, factorialA, numeroDos,factorialB);
 
@@ -93,62 +187,11 @@ int main()
 
 
 
-            break;
-
-            case 4:
-
-                    factorialA= FactorizarNumero(numeroUno);
-                    factorialB= FactorizarNumero(numeroDos);
-                    printf("\nEl factorial de %.2f es: %d y El factorial de %.2f es: %d", numeroUno, factorialA, numeroDos,factorialB);
-
-
-
-                    suma= SumarNumeros(numeroUno,numeroDos);
-                    printf("\nEl resultado de %.2f+%.2f es: %.2f",numeroUno, numeroDos, suma);
-
-
-                    resta= RestarNumeros(numeroUno,numeroDos);
-                    printf("\nEl resultado de %.2f-%.2f es: %.2f",numeroUno, numeroDos, resta);
-
-
-
-                    multiplicar= MultiplicarNumeros(numeroUno,numeroDos);
-                    printf("\nEl resultado de %.2f*%.2f es: %.2f",numeroUno, numeroDos, multiplicar);
-
-
-
-                    while(numeroDos==0)
-                    {
-                        printf("Error,No es posible dividir por 0, vuelva a ingresar los numeros.\n");
-                        printf("Ingrese el primer numero: ");
-                        scanf("%f", &numeroUno);
-                        printf("Ingrese el segundo numero: ");
-                        scanf("%f", &numeroDos);
-
-                    }
-
-                    dividir= DividirNumeros(numeroUno,numeroDos);
-                    printf("\nEl resultado de %.2f/%.2f es: %.2f",numeroUno, numeroDos, dividir);
-
-
-
-            break;
-
-            case 5:
-                    printf("\nGracias por usar nuestra calculadora\n");
-                    terminado=1;
-            break;
-
-        }
-    }
+*/
 
 
 
 
-
-    return 0;
-
-}
 
 /*
 -------------------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1599567225 source:c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tps\tp1\tp1_lab\main.c
+1599682486 source:c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tps\tp1\tp1_lab\main.c
 	<stdlib.h>
 	"funciones.h"
 	<stdlib.h>
@@ -17,6 +17,6 @@
 	"funciones.h"
 	"funciones.h"
 
-1599566329 c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tps\tp1\tp1_lab\funciones.h
+1599664276 c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tps\tp1\tp1_lab\funciones.h
 	<stdio.h>
 
