@@ -7,7 +7,7 @@
  * \return int Nos devuelve un numero entero
  *
  */
-int SumarNumeros(int,int);
+float SumarNumeros(float,float);
 
 /** \brief Se realiza la operacion resta entre dos numeros ingresados por el usuario
  *
@@ -16,7 +16,7 @@ int SumarNumeros(int,int);
  * \return int Nos devuelve un numero entero
  *
  */
-int RestarNumeros(int,int);
+float RestarNumeros(float,float);
 
 /** \brief Se realiza la operacion multiplicacion entre dos numeros ingresados por el usuario
  *
@@ -25,7 +25,7 @@ int RestarNumeros(int,int);
  * \return int Nos devuelve un numero entero
  *
  */
-int MultiplicarNumeros(int,int);
+float MultiplicarNumeros(float,float);
 
 /** \brief Se realiza la operacion division entre dos numeros ingresados por el usuario
  *
@@ -34,7 +34,7 @@ int MultiplicarNumeros(int,int);
  * \return float Nos devuelve un numero flotante
  *
  */
-float DividirNumeros(float,int);
+float DividirNumeros(float,float);
 
 /** \brief Se realiza la operacion factorial entre dos numeros ingresados por el usuario
  *

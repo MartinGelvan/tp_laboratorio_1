@@ -5,6 +5,159 @@
 
 int main()
 {
+    float numeroUno;
+    float numeroDos;
+    float suma;
+    float resta;
+    float multiplicar;
+    float dividir;
+    int factorialA;
+    int factorialB;
+    int opcion;
+    char terminado;
+
+    terminado=0;
+
+
+
+
+
+    while(terminado==0)
+    {
+        printf("\n|1.Ingresar primer numero|\n|2.Ingresar segundo numero|\n|3.Calcular|\n|4.Mostrar operacion|\n|5.Salir|\n");
+        printf("\nElija la opcion: ");
+        scanf("%d", &opcion);
+
+        while(opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4 && opcion!=5)
+        {
+            printf("Error, esa opcion no se encuentra disponible, reingrese la opcion que desee.\n");
+            printf("\n|1.Ingresar primer numero|\n|2.Ingresar segundo numero|\n|3.Calcular|\n|4.Mostrar operacion|\n|5.Salir|\n");
+            printf("Elija la opcion: ");
+            scanf("%d", &opcion);
+        }
+
+
+        switch(opcion)
+        {
+
+            case 1:
+                    printf("Ingrese el primer numero: ");
+                    scanf("%f", &numeroUno);
+                    printf("\nA=%.2f\n", numeroUno);
+
+            break;
+
+            case 2:
+                    printf("Ingrese el segundo numero: ");
+                    scanf("%f", &numeroDos);
+                    printf("\nB=%.2f\n", numeroDos);
+
+            break;
+
+            case 3:
+
+
+                    factorialA= FactorizarNumero(numeroUno);
+                    factorialB= FactorizarNumero(numeroDos);
+                    printf("\nEl factorial de %.2f es %d , y el de %.2f es %d\n", numeroUno, factorialA, numeroDos,factorialB);
+
+
+
+
+                    suma= SumarNumeros(numeroUno,numeroDos);
+                    printf("La suma de los numeros es de: %.2f\n", suma);
+
+
+
+                    resta= RestarNumeros(numeroUno,numeroDos);
+                    printf("La resta de los numeros es de: %.2f\n", resta);
+
+
+
+                    multiplicar= MultiplicarNumeros(numeroUno,numeroDos);
+                    printf("La multiplicacion de los numeros es de: %.2f\n", multiplicar);
+
+
+                    while(numeroDos==0)
+                    {
+                        printf("Error,No es posible dividir por 0, vuelva a ingresar los numeros.\n");
+                        printf("Ingrese el primer numero: ");
+                        scanf("%f", &numeroUno);
+                        printf("Ingrese el segundo numero: ");
+                        scanf("%f", &numeroDos);
+
+                    }
+
+                    dividir= DividirNumeros(numeroUno,numeroDos);
+                    printf("La division de los numeros es de: %.2f\n", dividir);
+
+
+
+            break;
+
+            case 4:
+
+                    factorialA= FactorizarNumero(numeroUno);
+                    factorialB= FactorizarNumero(numeroDos);
+                    printf("\nEl factorial de %.2f es: %d y El factorial de %.2f es: %d", numeroUno, factorialA, numeroDos,factorialB);
+
+
+
+                    suma= SumarNumeros(numeroUno,numeroDos);
+                    printf("\nEl resultado de %.2f+%.2f es: %.2f",numeroUno, numeroDos, suma);
+
+
+                    resta= RestarNumeros(numeroUno,numeroDos);
+                    printf("\nEl resultado de %.2f-%.2f es: %.2f",numeroUno, numeroDos, resta);
+
+
+
+                    multiplicar= MultiplicarNumeros(numeroUno,numeroDos);
+                    printf("\nEl resultado de %.2f*%.2f es: %.2f",numeroUno, numeroDos, multiplicar);
+
+
+
+                    while(numeroDos==0)
+                    {
+                        printf("Error,No es posible dividir por 0, vuelva a ingresar los numeros.\n");
+                        printf("Ingrese el primer numero: ");
+                        scanf("%f", &numeroUno);
+                        printf("Ingrese el segundo numero: ");
+                        scanf("%f", &numeroDos);
+
+                    }
+
+                    dividir= DividirNumeros(numeroUno,numeroDos);
+                    printf("\nEl resultado de %.2f/%.2f es: %.2f",numeroUno, numeroDos, dividir);
+
+
+
+            break;
+
+            case 5:
+                    printf("\nGracias por usar nuestra calculadora\n");
+                    terminado=1;
+            break;
+
+        }
+    }
+
+
+
+
+
+    return 0;
+
+}
+
+/*
+-------------------------------------------------------------------------------------
+#include <stdlib.h>
+#include "funciones.h"
+
+
+int main()
+{
     int numeroUno;
     int numeroDos;
     int suma;
@@ -151,7 +304,7 @@ int main()
 }
 
 
-
+*/
 
 /*
 ---------------------------------------------------------------------------------------------------------------

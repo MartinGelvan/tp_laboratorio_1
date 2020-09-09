@@ -2,9 +2,9 @@
 
 
 
-int SumarNumeros(int primerNumeroSuma,int segundoNumeroSuma)
+float SumarNumeros(float primerNumeroSuma,float segundoNumeroSuma)
 {
-    int suma;
+    float suma;
 
     suma= primerNumeroSuma + segundoNumeroSuma;
 
@@ -12,9 +12,9 @@ int SumarNumeros(int primerNumeroSuma,int segundoNumeroSuma)
 
 }
 
-int RestarNumeros(int primerNumeroResta,int segundoNumeroResta)
+float RestarNumeros(float primerNumeroResta,float segundoNumeroResta)
 {
-    int resta;
+    float resta;
 
     resta= primerNumeroResta - segundoNumeroResta;
 
@@ -22,9 +22,9 @@ int RestarNumeros(int primerNumeroResta,int segundoNumeroResta)
 
 }
 
-int MultiplicarNumeros(int primerNumeroMultiplicar,int segundoNumeroMultiplicar)
+float MultiplicarNumeros(float primerNumeroMultiplicar,float segundoNumeroMultiplicar)
 {
-    int multiplicar;
+    float multiplicar;
 
     multiplicar= primerNumeroMultiplicar * segundoNumeroMultiplicar;
 
@@ -32,7 +32,7 @@ int MultiplicarNumeros(int primerNumeroMultiplicar,int segundoNumeroMultiplicar)
 
 }
 
-float DividirNumeros(float primerNumeroDividir,int segundoNumeroDividir)
+float DividirNumeros(float primerNumeroDividir,float segundoNumeroDividir)
 {
     float dividir;
 
