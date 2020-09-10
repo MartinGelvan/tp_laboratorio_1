@@ -1,24 +1,11 @@
 # depslib dependency file v1.0
-1599695708 source:c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tps\tp1\tp1_lab\main.c
+1599764891 source:c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tps\tp1\tp1_lab\main.c
 	<stdlib.h>
-	"funciones.h"
-	<stdlib.h>
-	"funciones.h"
-	<stdlib.h>
-	"funciones.h"
-	<stdlib.h>
-	"funciones.h"
-	<stdlib.h>
-	"funciones.h"
-	<stdio.h>
-	<stdlib.h>
-	<stdio.h>
-	<stdlib.h>
-
-1599566315 source:c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tps\tp1\tp1_lab\funciones.c
-	"funciones.h"
 	"funciones.h"
 
-1599664276 c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tps\tp1\tp1_lab\funciones.h
+1599764939 source:c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tps\tp1\tp1_lab\funciones.c
+	"funciones.h"
+
+1599765009 c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tps\tp1\tp1_lab\funciones.h
 	<stdio.h>
 
