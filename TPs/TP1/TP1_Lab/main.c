@@ -68,7 +68,7 @@ int main()
 
 
 
-        while(opcion!=1 && opcion!=2 && opcion==3 && opcion==4 && opcion==5)
+        while(opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4 && opcion!=5)
         {
             printf("Error, esa opcion no se encuentra disponible, reingrese la opcion que desee.\n");
             printf("\n|1.Ingresar primer numero|\n|2.Ingresar segundo numero|\n|3.Calcular|\n|4.Mostrar operacion|\n|5.Salir|\n");
