@@ -41,7 +41,7 @@ int main()
         }
         else
         {
-            printf("\n|1.Ingresar 1er operando A=%f\n", numeroUno);
+            printf("\n|1.Ingresar 1er operando A=%.2f\n", numeroUno);
         }
 
         if(banderaNumeroDos==0)
@@ -51,7 +51,7 @@ int main()
         }
         else
         {
-            printf("\n|2.Ingresar 2do operando B=%f|\n",numeroDos);
+            printf("\n|2.Ingresar 2do operando B=%.2f|\n",numeroDos);
         }
 
 
@@ -133,7 +133,15 @@ int main()
                 printf("\nEl resultado de %.2f+%.2f es: %.2f",numeroUno, numeroDos, suma);
                 printf("\nEl resultado de %.2f-%.2f es: %.2f",numeroUno, numeroDos, resta);
                 printf("\nEl resultado de %.2f*%.2f es: %.2f",numeroUno, numeroDos, multiplicar);
-                printf("\nEl resultado de %.2f/%.2f es: %.2f",numeroUno, numeroDos, dividir);
+
+                if(numeroDos==0)
+                {
+                    printf("\nError, no se puede dividir por 0.");
+                }else
+                {
+                   printf("\nEl resultado de %.2f/%.2f es: %.2f",numeroUno, numeroDos, dividir);
+                }
+
                 printf("\nEl factorial de %.2f es: %d y El factorial de %.2f es: %d", numeroUno, factorialA, numeroDos,factorialB);
 
                 banderaCalculosRealizados=0;
