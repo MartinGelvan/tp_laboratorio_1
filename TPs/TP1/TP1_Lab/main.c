@@ -107,9 +107,21 @@ int main()
                 suma= SumarNumeros(numeroUno,numeroDos);
                 resta= RestarNumeros(numeroUno,numeroDos);
                 multiplicar= MultiplicarNumeros(numeroUno,numeroDos);
-                dividir= DividirNumeros(numeroUno,numeroDos);
-                factorialA= FactorizarNumero(numeroUno);
-                factorialB= FactorizarNumero(numeroDos);
+                if(numeroDos!=0)
+                {
+                    dividir= DividirNumeros(numeroUno,numeroDos);
+                }
+
+                 if(numeroUno>=0)
+                {
+                    factorialA= FactorizarNumero(numeroUno);
+                }
+
+                if(numeroDos>=0)
+                {
+                    factorialB= FactorizarNumero(numeroDos);
+                }
+
                 printf("\nSe realizaron los calculos con exito, vaya a la opcion 4 para mostrar resultados\n");
                 banderaCalculosRealizados=1;
 
@@ -132,17 +144,36 @@ int main()
                 printf("\nEl resultado de %.2f+%.2f es: %.2f\n",numeroUno, numeroDos, suma);
                 printf("\nEl resultado de %.2f-%.2f es: %.2f\n",numeroUno, numeroDos, resta);
                 printf("\nEl resultado de %.2f*%.2f es: %.2f\n",numeroUno, numeroDos, multiplicar);
-                if(numeroDos==0)
-                {
-                    printf("\nError, no se puede dividir por 0.\n");
-                }
-                else
+                if(numeroDos!=0)
                 {
                     printf("\nEl resultado de %.2f/%.2f es: %.2f\n",numeroUno, numeroDos, dividir);
                 }
+                else
+                {
+                    printf("\nError, no se puede dividir por 0.\n");
 
+                }
 
-                printf("\nEl factorial de %.2f es: %d y El factorial de %.2f es: %d\n", numeroUno, factorialA, numeroDos,factorialB);
+                if(numeroUno>=0)
+                {
+                    printf("\nEl factorial de %.2f es: %d", numeroUno, factorialA);
+
+                }else
+                {
+                    printf("\nError, no se puede realizar el factorial de un numero negativo.\n");
+
+                }
+
+                if(numeroDos>=0)
+                {
+                    printf("\nEl factorial de %.2f es: %d\n", numeroDos,factorialB);
+
+                }else
+                {
+                    printf("\nError, no se puede realizar el factorial de un numero negativo.\n");
+
+                }
+
 
                 banderaCalculosRealizados=0;
 
