@@ -112,12 +112,12 @@ int main()
                     dividir= DividirNumeros(numeroUno,numeroDos);
                 }
 
-                 if(numeroUno>=0)
+                 if(numeroUno>=0 && numeroUno==(int)numeroUno)
                 {
                     factorialA= FactorizarNumero(numeroUno);
                 }
 
-                if(numeroDos>=0)
+                if(numeroDos>=0 && numeroDos==(int)numeroDos)
                 {
                     factorialB= FactorizarNumero(numeroDos);
                 }
@@ -154,23 +154,23 @@ int main()
 
                 }
 
-                if(numeroUno>=0)
+                if(numeroUno>=0 && numeroUno==(int)numeroUno)
                 {
                     printf("\nEl factorial de %.2f es: %d", numeroUno, factorialA);
 
                 }else
                 {
-                    printf("\nError, no se puede realizar el factorial de un numero negativo.\n");
+                    printf("\nError, no se puede realizar el factorial de un numero negativo y de un numero decimal.\n");
 
                 }
 
-                if(numeroDos>=0)
+                if(numeroDos>=0 && numeroDos==(int)numeroDos)
                 {
                     printf("\nEl factorial de %.2f es: %d\n", numeroDos,factorialB);
 
                 }else
                 {
-                    printf("\nError, no se puede realizar el factorial de un numero negativo.\n");
+                    printf("\nError, no se puede realizar el factorial de un numero negativo y de un decimal.\n");
 
                 }
 
@@ -195,3 +195,4 @@ int main()
     return 0;
 
 }
+
