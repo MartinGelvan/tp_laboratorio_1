@@ -64,10 +64,6 @@ int main()
 
 
 
-
-
-
-
         while(opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4 && opcion!=5)
         {
             printf("Error, esa opcion no se encuentra disponible, reingrese la opcion que desee.\n");
@@ -101,24 +97,19 @@ int main()
 
             if(banderaNumeroUno==0 && banderaNumeroDos==0)
             {
-                printf("Ingrese ambos valores para poder realizar los calculos");
+                printf("\nIngrese ambos valores para poder realizar los calculos\n");
 
             }
             else
             {
-                if(numeroUno>=1 && numeroUno == (int) numeroUno)
-                {
-                   factorialA= FactorizarNumero(numeroUno);
-                }
-                if(numeroDos>=1 && numeroDos==(int) numeroDos)
-                {
-                   factorialB= FactorizarNumero(numeroDos);
-                }
+
 
                 suma= SumarNumeros(numeroUno,numeroDos);
                 resta= RestarNumeros(numeroUno,numeroDos);
                 multiplicar= MultiplicarNumeros(numeroUno,numeroDos);
                 dividir= DividirNumeros(numeroUno,numeroDos);
+                factorialA= FactorizarNumero(numeroUno);
+                factorialB= FactorizarNumero(numeroDos);
                 banderaCalculosRealizados=1;
 
 
@@ -140,33 +131,17 @@ int main()
                 printf("\nEl resultado de %.2f+%.2f es: %.2f\n",numeroUno, numeroDos, suma);
                 printf("\nEl resultado de %.2f-%.2f es: %.2f\n",numeroUno, numeroDos, resta);
                 printf("\nEl resultado de %.2f*%.2f es: %.2f\n",numeroUno, numeroDos, multiplicar);
-
                 if(numeroDos==0)
                 {
                     printf("\nError, no se puede dividir por 0.\n");
-                }else
-                {
-                   printf("\nEl resultado de %.2f/%.2f es: %.2f",numeroUno, numeroDos, dividir);
                 }
-
-                if(numeroUno== (int) numeroUno && numeroUno>=0)
+                else
                 {
-                    printf("\nEl resultado del factorial A es:%d\n",factorialA);
-                }else
-                {
-                    printf("\nError, no se puede hacer el factorial de A.\n");
-                }
-
-                if(numeroDos==(int)numeroDos && numeroDos>=0)
-                {
-                    printf("\nEl resultado del factorial B es:%d\n",factorialB);
-                }else
-                {
-                    printf("\nError, no se puede hacer el factorial de B.\n");
+                    printf("\nEl resultado de %.2f/%.2f es: %.2f\n",numeroUno, numeroDos, dividir);
                 }
 
 
-               // printf("\nEl factorial de %.2f es: %d y El factorial de %.2f es: %d", numeroUno, factorialA, numeroDos,factorialB);
+                printf("\nEl factorial de %.2f es: %d y El factorial de %.2f es: %d\n", numeroUno, factorialA, numeroDos,factorialB);
 
                 banderaCalculosRealizados=0;
 
@@ -185,9 +160,6 @@ int main()
 
 
 
-
-
     return 0;
 
 }
-
