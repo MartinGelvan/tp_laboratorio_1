@@ -110,6 +110,7 @@ int main()
                 dividir= DividirNumeros(numeroUno,numeroDos);
                 factorialA= FactorizarNumero(numeroUno);
                 factorialB= FactorizarNumero(numeroDos);
+                printf("\nSe realizaron los calculos con exito, vaya a la opcion 4 para mostrar resultados\n");
                 banderaCalculosRealizados=1;
 
 
