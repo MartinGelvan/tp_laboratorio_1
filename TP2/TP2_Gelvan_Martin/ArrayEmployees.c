@@ -23,8 +23,23 @@ void addEmployee(aEmployee listEmployees[],int len)
         scanf("%[^\n]", oneEmpleado.lastName);
         printf("\nENTER SALARY: ");
         scanf("%f", &oneEmpleado.salary);
+
+        while(oneEmpleado.salary<0)
+        {
+            printf("\nERROR, ENTER A POSITIVE SALARY\n");
+            printf("\nENTER SALARY: ");
+            scanf("%f", &oneEmpleado.salary);
+        }
+
         printf("\nENTER SECTOR: ");
         scanf("%d", &oneEmpleado.sector);
+
+        while(oneEmpleado.sector<0)
+        {
+            printf("\nERROR, ENTER A POSITIVE SECTOR\n");
+            printf("\nENTER SECTOR: ");
+            scanf("%d", &oneEmpleado.sector);
+        }
 
 
         listEmployees[i]=oneEmpleado;
@@ -319,9 +334,20 @@ float SumSalaries(aEmployee listEmployees[],int len)
 
 float AverageSalaries(aEmployee listEmployees[],int len)
 {
+    int i;
     float AverageSalaries;
 
-    AverageSalaries=SumSalaries(listEmployees,len)/AmountLoaded(listEmployees,len);
+    AverageSalaries=0;
+
+    for(i=0;i<len;i++)
+    {
+        if(listEmployees[i].isEmpty==0)
+        {
+          AverageSalaries=SumSalaries(listEmployees,len)/AmountLoaded(listEmployees,len);
+        }
+
+    }
+
 
     return AverageSalaries;
 
