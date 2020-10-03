@@ -370,7 +370,7 @@ void sortEmployeeByName(aEmployee listEmployees[],int len)
      printf("\n____________________________\n");
     printf("\nELIJA COMO QUIERE ORDENAR EL EMPLEADO\n");
     printf("\n---------------------------------\n");
-    printf("\n\n1.ASCENDENTE\n\n2.DESCENDENTE\n");
+    printf("\n\n1.ASCENDENTE A-->Z\n\n2.DESCENDENTE Z--->A\n");
     printf("\nELIJA UNA OPCION: ");
     scanf("%d",&opcion);
 
