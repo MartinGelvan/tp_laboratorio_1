@@ -4,6 +4,11 @@
 #define TAM 1000
 #include "ArrayEmployees.h"
 
+void Menu()
+{
+    printf("\n1.ALTAS\n2.MODIFICAR\n3.BAJA\n4.INFORMAR\n5.SALIR\n");
+
+}
 
 void addEmployee(aEmployee listEmployees[],int len)
 {
@@ -15,29 +20,29 @@ void addEmployee(aEmployee listEmployees[],int len)
 
     if(i!=-1)
     {
-        printf("\nENTER NAME: ");
+        printf("\nINGRESE NOMBRE: ");
         fflush(stdin);
         scanf("%[^\n]", oneEmpleado.name);
-        printf("\nENTER LAST NAME: ");
+        printf("\nINGRESE APELLIDO: ");
         fflush(stdin);
         scanf("%[^\n]", oneEmpleado.lastName);
-        printf("\nENTER SALARY: ");
+        printf("\nINGRESE SALARIO: ");
         scanf("%f", &oneEmpleado.salary);
 
         while(oneEmpleado.salary<0)
         {
-            printf("\nERROR, ENTER A POSITIVE SALARY\n");
+            printf("\nERROR,INGRESE UN SALARIO POSITIVO\n");
             printf("\nENTER SALARY: ");
             scanf("%f", &oneEmpleado.salary);
         }
 
-        printf("\nENTER SECTOR: ");
+        printf("\nINGRESE SECTOR: ");
         scanf("%d", &oneEmpleado.sector);
 
         while(oneEmpleado.sector<0)
         {
-            printf("\nERROR, ENTER A POSITIVE SECTOR\n");
-            printf("\nENTER SECTOR: ");
+            printf("\nERROR,INGRESE UN SECTOR POSITIVO\n");
+            printf("\nINGRESE SECTOR: ");
             scanf("%d", &oneEmpleado.sector);
         }
 
@@ -48,7 +53,7 @@ void addEmployee(aEmployee listEmployees[],int len)
 
     }else
     {
-        printf("No hay espacio!!!");
+        printf("NO HAY ESPACIO!!!");
     }
 
 
@@ -85,7 +90,7 @@ void removeEmployee(aEmployee listEmployees[],int len)
 
     printEmployees(listEmployees,len);
 
-    printf("\nENTER THE ID OF THE EMPLOYEE TO REMOVE: ");
+    printf("\nINGRESE EL ID DEL EMPLEADO A ELIMINAR: ");
     scanf("%d",&id);
 
     position=findEmployeeById(listEmployees,len,id);
@@ -93,11 +98,11 @@ void removeEmployee(aEmployee listEmployees[],int len)
     if(position>=0)
     {
         listEmployees[position].isEmpty=1;
-        printf("\nEMPLOYEE REMOVED SUCCESSFULLY\n");
+        printf("\nEMPLEADO ELIMINADO EXITOSAMENTE\n");
 
     }else
     {
-        printf("\nNOT FOUND THE EMPLOYEE TO DELETE\n");
+        printf("\nNO SE ENCONTRO EL EMPLEADO A ELIMINAR\n");
     }
 
 }
@@ -115,94 +120,94 @@ void ModifyEmployee(aEmployee listEmployees[],int len)
 
     printEmployees(listEmployees,len);
 
-    printf("\nENTER THE ID OF THE EMPLOYEE TO MODIFY: ");
+    printf("\nINGRESE EL ID DEL EMPLEADO A MODIFICAR: ");
     scanf("%d",&id);
 
     position=findEmployeeById(listEmployees,len,id);
 
         if(position>=0)
         {
-            printf("\n¿WHAT WOULD YOU LIKE TO MODIFY?\n1.NAME\n2.LAST NAME\n3.SALARY\n4.SECTOR\n");
-            printf("\nCHOOSE AN OPTION: ");
+            printf("\n¿QUE DESEA MODIFICAR?\n1.NOMBRE\n2.APELLIDO\n3.SALARIO\n4.SECTOR\n");
+            printf("\nELIJA UNA OPCION: ");
             scanf("%d",&answer);
 
             switch(answer)
             {
             case 1:
-                printf("ENTER NEW NAME:");
+                printf("INGRESE NUEVO NOMBRE:");
                 fflush(stdin);
                 scanf("%[^\n]", newName);
-                printf("\n¿YOU ARE SURE TO CHANGE THE NAME?\n");
-                printf("\nCHOOSE AN OPTION (y / n): ");
+                printf("\n¿ESTAS SEGURO DE MODIFICAR EL NOMBRE?\n");
+                printf("\nELIJA UNA OPCION (s / n): ");
                 fflush(stdin);
                 scanf("%c", &confirm);
-                if(confirm=='y')
+                if(confirm=='s')
                 {
                     strcpy(listEmployees[position].name,newName);
-                    printf("\nMODIFIED EMPLOYEE\n");
+                    printf("\nEMPLEADO MODIFICADO\n");
 
                 }
                 else
                 {
-                    printf("\nCANCELED MODIFICATION\n");
+                    printf("\nMODIFICACION CANCELADA\n");
                 }
                 break;
 
             case 2:
-                printf("ENTER NEW LAST NAME:");
+                printf("INGRESE NUEVO APELLIDO:");
                 fflush(stdin);
                 scanf("%[^\n]", newLastName);
-                printf("\n¿YOU ARE SURE TO CHANGE THE LAST NAME?\n");
-                printf("\nCHOOSE AN OPTION (y / n): ");
+                printf("\n¿ESTAS SEGURO DE MODIFICAR EL APELLIDO?\n");
+                printf("\nELIJA UNA OPCION (s / n): ");
                 fflush(stdin);
                 scanf("%c", &confirm);
-                if(confirm=='y')
+                if(confirm=='s')
                 {
                     strcpy(listEmployees[position].lastName,newLastName);
-                    printf("\nMODIFIED EMPLOYEE\n");
+                    printf("\nEMPLEADO MODIFICADO\n");
 
                 }
                 else
                 {
-                    printf("\nCANCELED MODIFICATION\n");
+                    printf("\nMODIFICACION CANCELADA\n");
                 }
                 break;
 
             case 3:
-                printf("ENTER NEW SALARY:");
+                printf("INGRESE NUEVO SALARIO:");
                 fflush(stdin);
                 scanf("%f", &newSalary);
-                printf("\n¿YOU ARE SURE TO CHANGE THE SALARY?\n");
-                printf("\nCHOOSE AN OPTION (y / n): ");
+                printf("\n¿ESTAS SEGURO DE CAMBIAR EL SALARIO?\n");
+                printf("\nELIJA UNA OPCION (s / n): ");
                 fflush(stdin);
                 scanf("%c", &confirm);
-                if(confirm=='y')
+                if(confirm=='s')
                 {
                     listEmployees[position].salary=newSalary;
-                    printf("\nMODIFIED EMPLOYEE\n");
+                    printf("\nEMPLEADO MODIFICADO\n");
 
                 }
                 else
                 {
-                    printf("\nCANCELED MODIFICATION\n");
+                    printf("\nMODIFICACION CANCELADA\n");
                 }
                 break;
 
             case 4:
-                printf("ENTER NEW SECTOR:");
+                printf("INGRESE NUEVO SECTOR:");
                     scanf("%d", &newSector);
-                    printf("\n¿YOU ARE SURE TO CHANGE THE SECTOR?\n");
-                    printf("\nCHOOSE AN OPTION (y / n): ");
+                    printf("\n¿ESTAS SEGURO DE CAMBIAR EL SECTOR?\n");
+                    printf("\nELIJA UNA OPCION (s / n): ");
                     fflush(stdin);
                     scanf("%c", &confirm);
-                    if(confirm=='y')
+                    if(confirm=='s')
                     {
                         listEmployees[position].sector=newSector;
-                        printf("\nMODIFIED EMPLOYEE\n");
+                        printf("\nEMPLEADO MODIFICADO\n");
 
                     }else
                     {
-                        printf("\nCANCELED MODIFICATION\n");
+                        printf("\nMODIFICACION CANCELADA\n");
                     }
             break;
         }
@@ -215,20 +220,55 @@ void ModifyEmployee(aEmployee listEmployees[],int len)
 
 }
 
+void PrintOneEmployee(aEmployee listEmployees)
+{
+
+    printf("\n\t-----------------------------------------------------------------------------------------\n");
+    printf("\n%14s | %13s | %14.2f | %18d | %20d|\n", listEmployees.name, listEmployees.lastName,listEmployees.salary, listEmployees.sector, listEmployees.id);
+    printf("\n\t-----------------------------------------------------------------------------------------\n");
+
+}
 
 void printEmployees(aEmployee listEmployees[],int len)
+{
+    int i;
+
+
+    printf("\t__________________________________________________________________________________________\n");
+    printf("\t|NOMBRE| \t|APELLIDO| \t|SALARIO| \t\t|SECTOR| \t\t|ID|\n");
+    printf("\t------------------------------------------------------------------------------------------\n");
+
+
+    for(i=0;i<len;i++)
+    {
+        if(listEmployees[i].isEmpty==0)
+        {
+            listEmployees[i].id=i+1;
+            PrintOneEmployee(listEmployees[i]);
+        }
+    }
+
+
+}
+
+
+
+void OptionFour(aEmployee listEmployees[],int len)
 {
     int i;
     float sum;
     float average;
     int CounterEmployeesHigherAverage;
 
+    OrderEmployees(listEmployees,len);
 
-    sortEmployeeByName(listEmployees,len);
+
 
     printf("\t__________________________________________________________________________________________\n");
-    printf("\t|Name| \t\t|Last Name| \t|Salary| \t\t|Sector| \t\t|ID|\n");
+    printf("\t|NOMBRE| \t|APELLIDO| \t|SALARIO| \t\t|SECTOR| \t\t|ID|\n");
     printf("\t------------------------------------------------------------------------------------------\n");
+
+
     for(i=0;i<len;i++)
     {
 
@@ -236,9 +276,7 @@ void printEmployees(aEmployee listEmployees[],int len)
         if(listEmployees[i].isEmpty==0)
         {
             listEmployees[i].id=i+1;
-            printf("\n\t-----------------------------------------------------------------------------------------\n");
-            printf("\n%14s | %13s | %14.2f | %18d | %20d|\n", listEmployees[i].name, listEmployees[i].lastName,listEmployees[i].salary, listEmployees[i].sector, listEmployees[i].id);
-            printf("\n\t-----------------------------------------------------------------------------------------\n");
+            PrintOneEmployee(listEmployees[i]);
         }
 
     }
@@ -249,9 +287,10 @@ void printEmployees(aEmployee listEmployees[],int len)
 
 
 
-    printf("\nTHE TOTAL SALARY IS: %.2f\n", sum);
-    printf("\nTHE AVERAGE SALARY IS: %.2f\n", average);
-    printf("\nTHE NUMBER OF EMPLOYEES WHO HAVE SALARIES EXCEED THE AVERAGE IS: %d\n", CounterEmployeesHigherAverage);
+    printf("\nEL SALARIO TOTAL ES: %.2f\n", sum);
+    printf("\nEL PROMEDIO DE LOS SALARIOS ES: %.2f\n", average);
+    printf("\nNUMERO DE EMPLEADOS QUE SUPERAN EL SALARIO PROMEDIO: %d\n", CounterEmployeesHigherAverage);
+    sortEmployeeByName(listEmployees,len);
 
 
 }
@@ -281,22 +320,33 @@ int findEmployeeById(aEmployee listEmployees[],int len, int id)
 
 
 }
-
-void sortEmployeeByName(aEmployee listEmployees[],int len)
+void OrderEmployees(aEmployee listEmployees[],int len)
 {
     int i;
     int j;
     aEmployee auxEmployee;
 
-    for(i=0;i<len-1;i++)
+     for(i=0;i<len-1;i++)
     {
         for(j=i+1;j<len;j++)
         {
-           if(strcmp(listEmployees[i].lastName,listEmployees[j].lastName)<0 && listEmployees[i].sector<listEmployees[j].sector)
+           if(strcmp(listEmployees[i].lastName,listEmployees[j].lastName)>0)
            {
                auxEmployee=listEmployees[i];
                listEmployees[i]=listEmployees[j];
                listEmployees[j]=auxEmployee;
+
+
+           }else
+           {
+               if(strcmp(listEmployees[i].lastName,listEmployees[j].lastName)==0 && listEmployees[i].sector<listEmployees[j].sector)
+               {
+                   auxEmployee=listEmployees[i];
+                   listEmployees[i]=listEmployees[j];
+                   listEmployees[j]=auxEmployee;
+
+
+               }
 
 
            }
@@ -307,6 +357,56 @@ void sortEmployeeByName(aEmployee listEmployees[],int len)
 
 
     }
+
+
+
+}
+
+void sortEmployeeByName(aEmployee listEmployees[],int len)
+{
+    int i;
+    int opcion;
+
+     printf("\n____________________________\n");
+    printf("\nELIJA COMO QUIERE ORDENAR EL EMPLEADO\n");
+    printf("\n---------------------------------\n");
+    printf("\n\n1.ASCENDENTE\n\n2.DESCENDENTE\n");
+    printf("\nELIJA UNA OPCION: ");
+    scanf("%d",&opcion);
+
+        printf("\t__________________________________________________________________________________________\n");
+        printf("\t|NOMBRE| \t\t|APELLIDO| \t|SALARIO| \t\t|SECTOR| \t\t|ID|\n");
+        printf("\t------------------------------------------------------------------------------------------\n");
+
+    switch(opcion)
+    {
+        case 1:
+                for(i=0;i<len;i++)
+                {
+                    if(listEmployees[i].isEmpty==0)
+                    {
+                        PrintOneEmployee(listEmployees[i]);
+                    }
+
+                }
+
+        break;
+
+        case 2:
+                for(i=len-1;i>0;i--)
+                {
+                    if(listEmployees[i].isEmpty==0)
+                    {
+                        PrintOneEmployee(listEmployees[i]);
+                    }
+
+                }
+
+        break;
+
+
+    }
+
 
 
 }

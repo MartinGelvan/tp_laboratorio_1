@@ -18,14 +18,14 @@ int main()
     do
     {
 
-        printf("\n1.HIGH\n2.MODIFICATE\n3.LOW\n4.PRINT\n5.EXIT\n");
-        printf("\nCHOOSE AN OPTION: ");
+        Menu();
+        printf("\nELIJA UNA OPCION: ");
         scanf("%d", &option);
 
         while(option!=1 && option!=2 && option!=3 && option!=4 && option!=5)
         {
-            printf("\nERROR,THES OPTION DOES NOT EXIST\n");
-            printf("RE-ENTER THE OPTION: ");
+            printf("\nERROR ESA OPCION NO EXISTE\n");
+            printf("REINGRESE LA OPCION: ");
             scanf("%d", &option);
         }
 
@@ -39,17 +39,17 @@ int main()
 
                     if(i!=-1)
                     {
-                        printf("\nSUCCESSFUL UPLOAD!\n");
+                        printf("\nCARGA EXITOSA!\n");
                     }else
                     {
-                        printf("\nTHERE IS NO MORE SPACE!!\n");
+                        printf("\nNO HAY MAS ESPACIO!!\n");
                     }
                 break;
             case 2:
 
                 if(AlreadyEnterEmployee==0)
                 {
-                    printf("\nFIRST ENTER AN EMPLOYEE\n");
+                    printf("\nPRIMERO INGRESE EMPLEADO\n");
                 }else
                 {
                     ModifyEmployee(listEmployees,TAM);
@@ -60,7 +60,7 @@ int main()
 
                  if(AlreadyEnterEmployee==0)
                 {
-                    printf("\nFIRST ENTER AN EMPLOYEE\n");
+                    printf("\nPRIMERO INGRESE EMPLEADO\n");
                 }else
                 {
                   removeEmployee(listEmployees,TAM);
@@ -71,15 +71,15 @@ int main()
 
                 if(AlreadyEnterEmployee==0)
                 {
-                    printf("\nFIRST ENTER AN EMPLOYEE\n");
+                    printf("\nPRIMERO INGRESE EMPLEADO\n");
                 }else
                 {
-                  printEmployees(listEmployees,TAM);
+                  OptionFour(listEmployees,TAM);
                 }
 
                 break;
             case 5:
-                printf("FINISHED");
+                printf("FINALIZADO");
                 break;
 
 

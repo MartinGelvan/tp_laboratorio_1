@@ -11,6 +11,13 @@ typedef struct
 
 }aEmployee;
 
+
+/** \brief Show menu with main options
+ *
+ * \return void
+ *
+ */
+void Menu();
 /** \brief add in a existing list of employees the values received as parameters in the first empty position
  *
  * \param aEmployee[] (list Employee)
@@ -18,8 +25,24 @@ typedef struct
  * \return void
  *
  */
+
 void addEmployee(aEmployee[],int);
-/** \brief
+/** \brief Order employees
+ *
+ * \param aEmployee[] (list Employees)
+ * \param int len
+ * \return void
+ *
+ */
+void OrderEmployees(aEmployee[],int);
+/** \brief Only show one employee
+ *
+ * \param aEmployee (list Employees)
+ * \return void
+ *
+ */
+void PrintOneEmployee(aEmployee);
+/** \brief Look for a free space
  *
  * \param aEmployee[] (list Employee)
  * \param int len
@@ -35,7 +58,7 @@ int SearchFree(aEmployee[],int);
  *
  */
 void removeEmployee(aEmployee[],int);
-/** \brief print the content of employees array
+/** \brief
  *
  * \param aEmployee[]  (list Employee)
  * \param int len
@@ -43,7 +66,7 @@ void removeEmployee(aEmployee[],int);
  *
  */
 void printEmployees(aEmployee[],int);
-/** \brief
+/** \brief Allows the user to modify the employee based on his id
  *
  * \param aEmployee[] (list Employee)
  * \param int len
@@ -68,7 +91,7 @@ int findEmployeeById(aEmployee[],int,int);
  *
  */
 void sortEmployeeByName(aEmployee[],int);
-/** \brief
+/** \brief Add up employee salaries
  *
  * \param aEmployee[] (list Employee)
  * \param int len
@@ -76,7 +99,7 @@ void sortEmployeeByName(aEmployee[],int);
  *
  */
 float SumSalaries(aEmployee[],int);
-/** \brief
+/** \brief average employee salaries
  *
  * \param aEmployee[] (list Employee)
  * \param int len
@@ -108,4 +131,12 @@ int AmountExceedAverageSalary(aEmployee[],int);
  *
  */
 int initEmployee(aEmployee[],int);
+/** \brief print the content of employees array
+ *
+ * \param aEmployee[] (list Employees)
+ * \param int len
+ * \return void
+ *
+ */
+void OptionFour(aEmployee[],int);
 
