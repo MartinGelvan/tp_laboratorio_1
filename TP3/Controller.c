@@ -306,6 +306,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
     Employee* unEmpleado;
     int len;
     int exito=0;
+    int i;
 
     if(path!=NULL && pArrayListEmployee!=NULL)
     {
@@ -314,6 +315,12 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
         if(pFile!=NULL)
         {
             len=ll_len(pArrayListEmployee);
+
+            for(i=0;i<len;i++)
+            {
+
+            }
+
         }
 
         exito=1;

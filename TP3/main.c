@@ -31,7 +31,7 @@ int main()
 
     do
     {
-        printf("1. Cargar los datos de los empleados desde el archivo data.csv (modo texto)\n");
+        printf("\n\n1. Cargar los datos de los empleados desde el archivo data.csv (modo texto)\n");
         printf("2. Cargar los datos de los empleados desde el archivo data.csv (modo binario)\n");
         printf("3. Alta de empleado\n");
         printf("4. Modificar datos de empleado\n");
@@ -84,7 +84,7 @@ int main()
             break;
 
             case 10:
-
+                    printf("\nFinalizado\n");
             break;
 
         }

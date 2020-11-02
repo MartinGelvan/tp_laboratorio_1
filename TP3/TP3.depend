@@ -90,3 +90,40 @@
 
 1603811935 c:\users\pcnew\desktop\tp3 otraversion\parser.h
 
+1604025138 source:c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tp3\employee.c
+	<stdlib.h>
+	"Employee.h"
+	<string.h>
+
+1604024562 c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tp3\employee.h
+	"LinkedList.h"
+
+1603811925 c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tp3\linkedlist.h
+
+1603944617 source:c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tp3\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"Controller.h"
+
+1604024102 c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tp3\controller.h
+
+1604293766 source:c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tp3\main.c
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1604293492 source:c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tp3\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"Controller.h"
+
+1603811935 c:\users\pcnew\desktop\git_laboratorio_mi_repositorio\tp_laboratorio_1\tp3\parser.h
+
