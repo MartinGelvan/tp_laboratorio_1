@@ -278,15 +278,44 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
     Employee* unEmpleado;
     int len;
+    int opcion;
 
     if(pArrayListEmployee!=NULL)
     {
         len=ll_len(pArrayListEmployee);
 
+         printf("\nComo le gustaria ordenar?\n");
+        printf("\n1.Por Id ascendente\n2.Por Id descendente\n3.Por Nombre A->Z\n4.Por Nombre Z->A\n");
+        printf("\nElija una opcion: ");
+        scanf("%d",&opcion);
+
+        switch(opcion)
+        {
+            case 1:
+                    ll_sort(pArrayListEmployee,employee_CompareById,1);
+                    controller_ListEmployee(pArrayListEmployee);
+            break;
+
+            case 2:
+                    ll_sort(pArrayListEmployee,employee_CompareById,0);
+                    controller_ListEmployee(pArrayListEmployee);
+            break;
+
+            case 3:
+                    ll_sort(pArrayListEmployee,employee_CompareByName,1);
+                    controller_ListEmployee(pArrayListEmployee);
+            break;
+
+            case 4:
+                    ll_sort(pArrayListEmployee,employee_CompareByName,0);
+                    controller_ListEmployee(pArrayListEmployee);
+            break;
+        }
+/*
         ll_sort(pArrayListEmployee,employee_CompareById,0);
 
         controller_ListEmployee(pArrayListEmployee);
-
+*/
     }
 
     return 1;
@@ -303,7 +332,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 {
 
     FILE* pFile;
-    Employee* unEmpleado;
+    Employee* Empleado;
     int len;
     int exito=0;
     int i;
@@ -318,7 +347,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 
             for(i=0;i<len;i++)
             {
-
+                fprintf("%d %s %d %d\n",Empleado->id,Empleado->nombre,Empleado->horasTrabajadas,Empleado->sueldo);
             }
 
         }
@@ -339,7 +368,32 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    FILE* pFile;
+    Employee* Empleado;
+    int len;
+    int exito=0;
+    int i;
+
+    if(path!=NULL && pArrayListEmployee!=NULL)
+    {
+        pFile=fopen(path,"wb");
+
+        if(pFile!=NULL)
+        {
+            len=ll_len(pArrayListEmployee);
+
+            for(i=0;i<len;i++)
+            {
+                fwrite(Empleado,sizeof(Employee),len,pFile);
+            }
+
+            fclose(pFile);
+        }
+
+        exito=1;
+    }
+
+    return exito;
 }
 
 int IdAutomatico(int siguiente, int id)
