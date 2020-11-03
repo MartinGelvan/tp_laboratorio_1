@@ -25,7 +25,7 @@ int main()
 {
     LinkedList* miLista;
     int opcion;
-    int siguienteId=1;
+    int exito;
 
     miLista = ll_newLinkedList();//constructor
 
@@ -45,18 +45,43 @@ int main()
 
         scanf("%d",&opcion);
 
+        while(opcion<1 || opcion>10)
+        {
+            printf("\nError, reingrese la opcion: ");
+            scanf("%d",&opcion);
+        }
+
         switch(opcion)
         {
             case 1:
-                    controller_loadFromText("data.csv" , miLista);
+
+                    exito=controller_loadFromText("data.csv" , miLista);
+
+                     if(exito==1)
+                    {
+                        printf("\nCarga exitosa\n");
+
+                    }else
+                    {
+                        printf("\nArchivo Inexistene\n");
+                    }
             break;
 
             case 2:
-                    controller_loadFromBinary("data.dat" , miLista);
+                    exito=controller_loadFromBinary("data.dat" , miLista);
+
+                     if(exito==1)
+                    {
+                         printf("\nCarga exitosa\n");
+
+                    }else
+                    {
+                       printf("\nArchivo Inexistene, se creara un archivo\n");
+                    }
             break;
 
             case 3:
-                    controller_addEmployee(miLista,siguienteId);
+                    controller_addEmployee(miLista);
             break;
 
             case 4:
@@ -76,11 +101,29 @@ int main()
             break;
 
             case 8:
-                    controller_saveAsText("data.csv" , miLista);
+                    exito=controller_saveAsText("data.csv" , miLista);
+
+                    if(exito==1)
+                    {
+                        printf("\nGuardado con exito\n");
+
+                    }else
+                    {
+                       printf("\nNo se pudo mostrar\n");
+                    }
             break;
 
             case 9:
-                    controller_saveAsBinary("data.dat" , miLista);
+                    exito=controller_saveAsBinary("data.dat" , miLista);
+                    if(exito==1)
+                    {
+                        printf("\nGuardado con exito\n");
+
+                    }else
+                    {
+                       printf("\nNo se pudo mostrar\n");
+                    }
+
             break;
 
             case 10:
