@@ -76,11 +76,11 @@ int main()
             break;
 
             case 8:
-
+                    controller_saveAsText("data.csv" , miLista);
             break;
 
             case 9:
-
+                    controller_saveAsBinary("data.dat" , miLista);
             break;
 
             case 10:

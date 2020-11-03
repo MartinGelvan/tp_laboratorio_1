@@ -5,23 +5,46 @@
 #include "Employee.h"
 #include <string.h>
 
-int employee_CompareByName(Employee* e1, Employee* e2)
+int employee_CompareByName(void* e1, void* e2)
 {
-    return strcmp(e1->nombre,e2->nombre);
+    Employee* empleado1;
+    Employee* empleado2;
+    char auxNombre1[20];
+    char auxNombre2[20];
+
+
+
+    empleado1=(Employee*)e1;
+    empleado2=(Employee*)e2;
+
+    employee_getNombre(empleado1,auxNombre1);
+    employee_getNombre(empleado2,auxNombre2);
+
+    return strcmp(auxNombre1,auxNombre2);
 }
 
 
-int employee_CompareById(Employee* e1, Employee* e2)
+int employee_CompareById(void* e1, void* e2)
 {
     int compare=0;
+    Employee* empleado1;
+    Employee* empleado2;
+    int auxId1;
+    int auxId2;
 
-    if(e1->id>e2->id)
+    empleado1=(Employee*)e1;
+    empleado2=(Employee*)e2;
+
+    employee_getId(empleado1,&auxId1);
+    employee_getId(empleado2,&auxId2);
+
+    if(auxId1>auxId2)
     {
         compare=1;
 
     }else
     {
-        if(e1->id<e2->id)
+        if(auxId1<auxId2)
         {
             compare=-1;
         }
@@ -29,6 +52,68 @@ int employee_CompareById(Employee* e1, Employee* e2)
 
     return compare;
 }
+
+
+int employee_CompareBySalary(void* e1, void* e2)
+{
+    int compare=0;
+    Employee* empleado1;
+    Employee* empleado2;
+    int auxSueldo1;
+    int auxSueldo2;
+
+    empleado1=(Employee*)e1;
+    empleado2=(Employee*)e2;
+
+    employee_getSueldo(empleado1,&auxSueldo1);
+    employee_getSueldo(empleado2,&auxSueldo2);
+
+
+    if(auxSueldo1>auxSueldo2)
+    {
+        compare=1;
+
+    }else
+    {
+        if(auxSueldo1<auxSueldo2)
+        {
+            compare=-1;
+        }
+    }
+
+    return compare;
+}
+
+int employee_CompareByHorasTrabajadas(void* e1, void* e2)
+{
+    int compare=0;
+    Employee* empleado1;
+    Employee* empleado2;
+    int auxHoras1;
+    int auxHoras2;
+
+    empleado1=(Employee*)e1;
+    empleado2=(Employee*)e2;
+
+    employee_getHorasTrabajadas(empleado1,&auxHoras1);
+    employee_getHorasTrabajadas(empleado2,&auxHoras2);
+
+
+    if(auxHoras1>auxHoras2)
+    {
+        compare=1;
+
+    }else
+    {
+        if(auxHoras1<auxHoras2)
+        {
+            compare=-1;
+        }
+    }
+
+    return compare;
+}
+
 
 Employee* employee_new()
 {
@@ -102,7 +187,7 @@ int employee_getNombre(Employee* this,char* nombre)
 
     if(this!=NULL && nombre!=NULL)
     {
-        strcpy(*nombre,this->nombre);
+        strcpy(nombre,this->nombre);
         getteo=1;
     }
 

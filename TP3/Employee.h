@@ -9,8 +9,10 @@ typedef struct
     int sueldo;
 }Employee;
 
-int employee_CompareByName(Employee* e1, Employee* e2);
-int employee_CompareById(Employee* e1, Employee* e2);
+int employee_CompareByName(void* e1, void* e2);
+int employee_CompareById(void* e1, void* e2);
+int employee_CompareBySalary(void* e1, void* e2);
+int employee_CompareByHorasTrabajadas(void* e1, void* e2);
 Employee* employee_new();
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr);
 void employee_delete();

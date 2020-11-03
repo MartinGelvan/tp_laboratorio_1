@@ -93,6 +93,9 @@ int controller_addEmployee(LinkedList* pArrayListEmployee, int siguiente)
     int auxSueldo;
     int exito=0;
 
+
+
+
     Employee* unEmpleado;
 
     if(pArrayListEmployee!=NULL)
@@ -276,16 +279,16 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
-    Employee* unEmpleado;
-    int len;
+    //Employee* unEmpleado;
+    //int len;
     int opcion;
 
     if(pArrayListEmployee!=NULL)
     {
-        len=ll_len(pArrayListEmployee);
+        //ll_len(pArrayListEmployee);
 
-         printf("\nComo le gustaria ordenar?\n");
-        printf("\n1.Por Id ascendente\n2.Por Id descendente\n3.Por Nombre A->Z\n4.Por Nombre Z->A\n");
+        printf("\nComo le gustaria ordenar?\n");
+        printf("\n1.Por Id ascendente\n2.Por Id descendente\n3.Por Nombre A->Z\n4.Por Nombre Z->A\n5.Por Sueldo ascendente\n6.Por Sueldo descendente\n7.Por Horas Trabajadas ascendente\n8.Por Horas Trabajadas descendente\n");
         printf("\nElija una opcion: ");
         scanf("%d",&opcion);
 
@@ -310,6 +313,29 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
                     ll_sort(pArrayListEmployee,employee_CompareByName,0);
                     controller_ListEmployee(pArrayListEmployee);
             break;
+
+            case 5:
+                    ll_sort(pArrayListEmployee,employee_CompareBySalary,1);
+                    controller_ListEmployee(pArrayListEmployee);
+            break;
+
+            case 6:
+                    ll_sort(pArrayListEmployee,employee_CompareBySalary,0);
+                    controller_ListEmployee(pArrayListEmployee);
+            break;
+
+            case 7:
+                    ll_sort(pArrayListEmployee,employee_CompareByHorasTrabajadas,1);
+                    controller_ListEmployee(pArrayListEmployee);
+            break;
+
+            case 8:
+                    ll_sort(pArrayListEmployee,employee_CompareByHorasTrabajadas,0);
+                    controller_ListEmployee(pArrayListEmployee);
+            break;
+
+
+
         }
 /*
         ll_sort(pArrayListEmployee,employee_CompareById,0);
@@ -336,6 +362,10 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
     int len;
     int exito=0;
     int i;
+    int auxId;
+    char auxNombre[20];
+    int auxHorasTrabajadas;
+    int auxSueldo;
 
     if(path!=NULL && pArrayListEmployee!=NULL)
     {
@@ -347,8 +377,15 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 
             for(i=0;i<len;i++)
             {
-                fprintf("%d %s %d %d\n",Empleado->id,Empleado->nombre,Empleado->horasTrabajadas,Empleado->sueldo);
+                Empleado=(Employee*)ll_get(pArrayListEmployee,i);
+                employee_getId(Empleado,&auxId);
+                employee_getNombre(Empleado,auxNombre);
+                employee_getHorasTrabajadas(Empleado,&auxHorasTrabajadas);
+                employee_getSueldo(Empleado,&auxSueldo);
+                fprintf(pFile,"%d %s %d %d\n",auxId,auxNombre,auxHorasTrabajadas,auxSueldo);
             }
+
+            fclose(pFile);
 
         }
 
@@ -381,10 +418,11 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
         if(pFile!=NULL)
         {
             len=ll_len(pArrayListEmployee);
-
+            Empleado=controller_ListEmployee(pArrayListEmployee);
+            controller_ListEmployee(pArrayListEmployee);
             for(i=0;i<len;i++)
             {
-                fwrite(Empleado,sizeof(Employee),len,pFile);
+                fwrite(Empleado,sizeof(Employee),1,pFile);
             }
 
             fclose(pFile);
