@@ -28,8 +28,6 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
         {
             exito=parser_EmployeeFromText(pFile , pArrayListEmployee);
 
-            fclose(pFile);
-
         }
 
 
@@ -54,12 +52,11 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 
     int exito=0;
 
-    pFile=(FILE*)malloc(sizeof(FILE));
-
+   // pFile=(FILE*)malloc(sizeof(FILE));
 
     if(path!=NULL && pArrayListEmployee!=NULL)
     {
-        pFile= fopen("data.dat","rb");
+        pFile= fopen(path,"rb");
 
         if(pFile!=NULL)
         {
@@ -69,7 +66,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
         {
             printf("Archivo Inexistene, se creara un archivo\n");
             pFile=fopen(path,"wb");
-            fwrite(pArrayListEmployee, sizeof(LinkedList),1000,pFile);
+            //fwrite(pArrayListEmployee, sizeof(LinkedList),1000,pFile);
         }
 
 
@@ -374,7 +371,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
         if(pFile!=NULL)
         {
             len=ll_len(pArrayListEmployee);
-
+            fprintf(pFile, "id,nombre,horasTrabajadas,sueldo\n");
             for(i=0;i<len;i++)
             {
                 Empleado=(Employee*)ll_get(pArrayListEmployee,i);
@@ -382,7 +379,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
                 employee_getNombre(Empleado,auxNombre);
                 employee_getHorasTrabajadas(Empleado,&auxHorasTrabajadas);
                 employee_getSueldo(Empleado,&auxSueldo);
-                fprintf(pFile,"%d %s %d %d\n",auxId,auxNombre,auxHorasTrabajadas,auxSueldo);
+                fprintf(pFile,"%d,%s,%d,%d\n",auxId,auxNombre,auxHorasTrabajadas,auxSueldo);
             }
 
             fclose(pFile);
@@ -418,10 +415,9 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
         if(pFile!=NULL)
         {
             len=ll_len(pArrayListEmployee);
-            Empleado=controller_ListEmployee(pArrayListEmployee);
-            controller_ListEmployee(pArrayListEmployee);
             for(i=0;i<len;i++)
             {
+                Empleado= (Employee*)ll_get(pArrayListEmployee,i);
                 fwrite(Empleado,sizeof(Employee),1,pFile);
             }
 
