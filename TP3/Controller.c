@@ -92,14 +92,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     int id;
     Employee* unEmpleado;
 
-/*
-    if(employee_setId(unEmpleado,auxId)==1 && employee_setNombre(unEmpleado,auxNombre)==1 && employee_setHorasTrabajadas(unEmpleado,auxHorasTrabajadas)==1 && employee_setSueldo(unEmpleado,auxSueldo)==1)
-            {
-                ll_add(pArrayListEmployee,unEmpleado);
-                printf("\nEmpleado cargado exitosamente\n");
 
-            }
-*/
     len=ll_len(pArrayListEmployee);
 
     if(pArrayListEmployee!=NULL)
