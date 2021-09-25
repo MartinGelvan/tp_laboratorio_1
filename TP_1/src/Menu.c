@@ -15,6 +15,12 @@ void mostrarSeparador(void);
 #include "pedirNumeros.h"
 #include "Funciones.h"
 
+/**
+ * @fn void menu(int)
+ * @brief Se muestra un menu de opciones para que el usuario elija
+ *
+ * @param Indicamos la variable int opcion para que el usuario indique que opcion va a elegir
+ */
 void menu(int opcion) {
 
 	setbuf(stdout,NULL);
@@ -190,11 +196,21 @@ void menu(int opcion) {
 
 }
 
+/**
+ * @fn void limpiarConsola(void)
+ * @brief Lo que realiza esta funcion es que se vea mas limpio la consola
+ *
+ */
 void limpiarConsola(void)
 {
 	printf("\n\n\n\n");
 }
 
+/**
+ * @fn void mostrarSeparador(void)
+ * @brief Lo que hace esta funcion es que haya un separador entre cada opcion
+ *
+ */
 void mostrarSeparador(void)
 {
 	printf("---------------------------------------------\n");
