@@ -15,12 +15,7 @@ void mostrarSeparador(void);
 #include "pedirNumeros.h"
 #include "Funciones.h"
 
-/**
- * @fn void menu(int)
- * @brief Se muestra un menu de opciones para que el usuario elija
- *
- * @param Indicamos la variable int opcion para que el usuario indique que opcion va a elegir
- */
+
 void menu(int opcion) {
 
 	setbuf(stdout,NULL);
@@ -62,7 +57,7 @@ void menu(int opcion) {
 		}
 		else
 		{
-			printf("\n|2.Ingresar 2do operando B=%.2f\n",numeroDos);
+			printf("\n2.Ingresar 2do operando B=%.2f\n",numeroDos);
 		}
 
 
