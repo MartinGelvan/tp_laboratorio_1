@@ -19,9 +19,9 @@ void Menu()
 
 }
 
-void addEmployee(aEmployee listEmployees[],int len)
+void addEmployee(aEmployee listEmployees[],int len,int id, char name[],char	lastName[],float salary,int sector)
 {
-    aEmployee oneEmpleado;
+
     int i;
 
     i=SearchFree(listEmployees,len);
@@ -29,14 +29,18 @@ void addEmployee(aEmployee listEmployees[],int len)
 
     if(i!=-1)
     {
-    	pedirCadena(oneEmpleado.name, "INGRESE NOMBRE: ","ERROR, REINGRESE NOMBRE (MAX 21 CARACTERES Y EN LETRAS): ", 21);
-    	validacion_Cadena(oneEmpleado.name);
-    	pedirCadena(oneEmpleado.lastName, "INGRESE APELLIDO: ","ERROR, REINGRESE APELLIDO (MAX 21 CARACTERES Y EN LETRAS): ", 21);
-    	pedirFlotante(&oneEmpleado.salary,"INGRESE SALARIO: ","ERROR, REINGRESE SALARIO (10000-170000): ",10000, 170000);
-    	pedirEntero(&oneEmpleado.sector, "INGRESE SECTOR: ","ERROR, REINGRESE SECTOR (1-1000): ",1, 1000);
+    	pedirCadena(name, "INGRESE NOMBRE: ","ERROR, REINGRESE NOMBRE (MAX 21 CARACTERES Y EN LETRAS): ", 21);
+    	validar_Minuscula(name);
+    	pedirCadena(lastName, "INGRESE APELLIDO: ","ERROR, REINGRESE APELLIDO (MAX 21 CARACTERES Y EN LETRAS): ", 21);
+    	validar_Minuscula(lastName);
+    	pedirFlotante(&salary,"INGRESE SALARIO: ","ERROR, REINGRESE SALARIO (10000-170000): ",10000, 170000);
+    	pedirEntero(&sector, "INGRESE SECTOR: ","ERROR, REINGRESE SECTOR (1-1000): ",1, 1000);
 
-
-        listEmployees[i]=oneEmpleado;
+    	listEmployees[i].id=id;
+        strcpy(listEmployees[i].name,name);
+        strcpy(listEmployees[i].lastName,lastName);
+        listEmployees[i].salary=salary;
+        listEmployees[i].sector=sector;
 
         listEmployees[i].isEmpty=0;
 
@@ -72,28 +76,27 @@ int SearchFree(aEmployee listEmployees[],int len)
 
 }
 
-void removeEmployee(aEmployee listEmployees[],int len)
+int removeEmployee(aEmployee listEmployees[],int len, int id)
 {
+	int retorno=-1;
     int position;
-    int id;
-    aEmployee idEmployee;
-    printEmployees(listEmployees,len);
 
-    pedirEntero(&idEmployee.id, "INGRESE ID: ","ERROR, REINGRESE ID (1-1000): ",1, 1000);
-    id=idEmployee.id;
 
     position=findEmployeeById(listEmployees,len,id);
 
     if(position>=0)
     {
         listEmployees[position].isEmpty=1;
+        PrintOneEmployee(listEmployees[position]);
         printf("\nEMPLEADO ELIMINADO EXITOSAMENTE\n");
+        retorno=1;
 
     }else
     {
         printf("\nNO SE ENCONTRO EL EMPLEADO A ELIMINAR\n");
     }
 
+    return retorno;
 }
 
 void ModifyEmployee(aEmployee listEmployees[],int len)
@@ -111,7 +114,7 @@ void ModifyEmployee(aEmployee listEmployees[],int len)
 
     printEmployees(listEmployees,len);
 
-    pedirEntero(&idEmployee.id, "INGRESE ID: ","ERROR, REINGRESE ID (1-1000): ",1, 1000);
+    pedirEntero(&idEmployee.id, "INGRESE ID: ","ERROR, REINGRESE ID (0-1000): ",0, 1000);
     id=idEmployee.id;
 
     position=findEmployeeById(listEmployees,len,id);
@@ -127,7 +130,9 @@ void ModifyEmployee(aEmployee listEmployees[],int len)
             case 1:
 
             	pedirCadena(newName, "INGRESE NUEVO NOMBRE: ","ERROR, REINGRESE NOMBRE (MAX 21 CARACTERES): ", 21);
+            	validar_Minuscula(newName);
             	pedirCadena(&confirm, "\n¿ESTAS SEGURO DE MODIFICAR EL NOMBRE?:\n","ERROR, REINGRESE LA OPCION (s / n): ", 1);
+
 
                 if(confirm=='s')
                 {
@@ -143,7 +148,9 @@ void ModifyEmployee(aEmployee listEmployees[],int len)
 
             case 2:
             	pedirCadena(newLastName, "INGRESE NUEVO APELLIDO: ","ERROR, REINGRESE APELLIDO (MAX 21 CARACTERES): ", 21);
+            	validar_Minuscula(newLastName);
             	pedirCadena(&confirm, "\n¿ESTAS SEGURO DE MODIFICAR EL APELLIDO?:\n","ERROR, REINGRESE LA OPCION (s / n): ", 1);
+
 
                 if(confirm=='s')
                 {
@@ -220,7 +227,7 @@ void printEmployees(aEmployee listEmployees[],int len)
     {
         if(listEmployees[i].isEmpty==0)
         {
-            listEmployees[i].id=i+1;
+           // listEmployees[i].id=i+1;
             PrintOneEmployee(listEmployees[i]);
         }
     }
@@ -232,31 +239,14 @@ void printEmployees(aEmployee listEmployees[],int len)
 
 void OptionFour(aEmployee listEmployees[],int len)
 {
-    int i;
+
     float sum;
     float average;
     int CounterEmployeesHigherAverage;
 
-    OrderEmployees(listEmployees,len);
 
 
 
-    printf("\t__________________________________________________________________________________________\n");
-    printf("\t|NOMBRE| \t|APELLIDO| \t|SALARIO| \t\t|SECTOR| \t\t|ID|\n");
-    printf("\t------------------------------------------------------------------------------------------\n");
-
-
-    for(i=0;i<len;i++)
-    {
-
-
-        if(listEmployees[i].isEmpty==0)
-        {
-            listEmployees[i].id=i+1;
-            PrintOneEmployee(listEmployees[i]);
-        }
-
-    }
 
     sum=SumSalaries(listEmployees,len);
     average=AverageSalaries(listEmployees,len);
@@ -267,7 +257,7 @@ void OptionFour(aEmployee listEmployees[],int len)
     printf("\nEL SALARIO TOTAL ES: %.2f\n", sum);
     printf("\nEL PROMEDIO DE LOS SALARIOS ES: %.2f\n", average);
     printf("\nNUMERO DE EMPLEADOS QUE SUPERAN EL SALARIO PROMEDIO: %d\n", CounterEmployeesHigherAverage);
-    sortEmployeeByName(listEmployees,len);
+
 
 
 }
@@ -297,94 +287,84 @@ int findEmployeeById(aEmployee listEmployees[],int len, int id)
 
 
 }
-void OrderEmployees(aEmployee listEmployees[],int len)
+
+int sortEmployeeByName(aEmployee listEmployees[],int len, int order)
 {
+	int retorno=-1;
     int i;
-    int j;
+    int bandera;
+    int nuevoLimite=len - 1;
     aEmployee auxEmployee;
 
-     for(i=0;i<len-1;i++)
-    {
-        for(j=i+1;j<len;j++)
-        {
-           if(strcmp(listEmployees[i].lastName,listEmployees[j].lastName)>0)
-           {
-               auxEmployee=listEmployees[i];
-               listEmployees[i]=listEmployees[j];
-               listEmployees[j]=auxEmployee;
 
-
-           }else
-           {
-               if(strcmp(listEmployees[i].lastName,listEmployees[j].lastName)==0 && listEmployees[i].sector<listEmployees[j].sector)
-               {
-                   auxEmployee=listEmployees[i];
-                   listEmployees[i]=listEmployees[j];
-                   listEmployees[j]=auxEmployee;
-
-
-               }
-
-
-           }
-
-
-        }
-
-
-
-    }
-
-
-
-}
-
-void sortEmployeeByName(aEmployee listEmployees[],int len)
-{
-    int i;
-    int opcion;
-
-     printf("\n____________________________\n");
-    printf("\nELIJA COMO QUIERE ORDENAR EL EMPLEADO\n");
-    printf("\n---------------------------------\n");
-    printf("\n\n1.ASCENDENTE A-->Z\n\n2.DESCENDENTE Z--->A\n");
-    printf("\nELIJA UNA OPCION: ");
-    scanf("%d",&opcion);
-
-        printf("\t__________________________________________________________________________________________\n");
-        printf("\t|NOMBRE| \t\t|APELLIDO| \t|SALARIO| \t\t|SECTOR| \t\t|ID|\n");
-        printf("\t------------------------------------------------------------------------------------------\n");
-
-    switch(opcion)
+    switch(order)
     {
         case 1:
-                for(i=0;i<len;i++)
-                {
-                    if(listEmployees[i].isEmpty==0)
-                    {
-                        PrintOneEmployee(listEmployees[i]);
-                    }
+        	do
+			{
 
-                }
+				bandera = 0;
+
+				for(i = 0; i < nuevoLimite; i++)
+				{
+					if(strcmp(listEmployees[i].lastName, listEmployees[i+1].lastName) >0)
+					{
+						auxEmployee = listEmployees[i];
+						listEmployees[i] = listEmployees[i+1];
+						listEmployees[i+1] = auxEmployee;
+						bandera = 1;
+						retorno = 0;
+					}else
+					{
+						if(strcmp(listEmployees[i].lastName, listEmployees[i+1].lastName) ==0 && listEmployees[i].sector > listEmployees[i+1].sector)
+						{
+							auxEmployee = listEmployees[i];
+							listEmployees[i] = listEmployees[i+1];
+							listEmployees[i+1] = auxEmployee;
+							bandera = 1;
+							retorno = 0;
+						}
+					}
+				}
+			}while(bandera);
 
         break;
 
         case 2:
-					for(i=len-1;i>0;i--)
-					{
-						if(listEmployees[i].isEmpty==0)
-						{
-							PrintOneEmployee(listEmployees[i]);
-						}
+        	do
+			{
+				nuevoLimite = len - 1;
+				bandera = 0;
 
+				for(i = 0; i < nuevoLimite; i++)
+				{
+					if(strcmp(listEmployees[i].lastName, listEmployees[i+1].lastName) <0)
+					{
+						auxEmployee = listEmployees[i];
+						listEmployees[i] = listEmployees[i+1];
+						listEmployees[i+1] = auxEmployee;
+						bandera = 1;
+						retorno = 0;
+					}else
+					{
+						if(strcmp(listEmployees[i].lastName, listEmployees[i+1].lastName) ==0 && listEmployees[i].sector < listEmployees[i+1].sector)
+						{
+							auxEmployee = listEmployees[i];
+							listEmployees[i] = listEmployees[i+1];
+							listEmployees[i+1] = auxEmployee;
+							bandera = 1;
+							retorno = 0;
+						}
 					}
+				}
+			}while(bandera);
 
         break;
 
 
     }
 
-
+    return retorno;
 
 }
 
@@ -484,3 +464,5 @@ int initEmployee(aEmployee listEmployees[],int len)
     return 0;
 
 }
+
+

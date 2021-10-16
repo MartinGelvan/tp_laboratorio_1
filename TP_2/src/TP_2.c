@@ -13,6 +13,8 @@
 #include<string.h>
 #define TAM 1000
 #include "ArrayEmployees.h"
+#include "ValidacionesPersonalizado.h"
+#include "Inputs.h"
 
 int main(void) {
 	setbuf(stdout,NULL);
@@ -20,8 +22,12 @@ int main(void) {
 	int option;
 
 	aEmployee listEmployees[TAM];
+	aEmployee employeeAux;
 	int i;
 	int AlreadyEnterEmployee=0;
+	int iD=0;
+	int order;
+	int iDParaEliminar;
 
 
 	i=initEmployee(listEmployees,TAM);
@@ -31,32 +37,29 @@ int main(void) {
 	{
 
 		Menu();
-		printf("\nELIJA UNA OPCION: ");
-		scanf("%d", &option);
 
-		while(option!=1 && option!=2 && option!=3 && option!=4 && option!=5)
-		{
-			printf("\nERROR ESA OPCION NO EXISTE\n");
-			printf("REINGRESE LA OPCION: ");
-			scanf("%d", &option);
-		}
+		pedirEntero(&option," \nELIJA UNA OPCION(1-5): ", "\nERROR ESA OPCION NO EXISTE,ELIJA UNA OPCION(1-5):", 1, 5);
+
+
 
 		switch(option)
 		{
 
 			case 1:
 			AlreadyEnterEmployee=0;
-			addEmployee(listEmployees,TAM);
+			addEmployee(listEmployees,TAM,iD,employeeAux.name ,employeeAux.lastName,employeeAux.salary,employeeAux.sector);
 			AlreadyEnterEmployee=1;
 
 			if(i!=-1)
 			{
+				iD++;
 				printf("\nCARGA EXITOSA!\n");
 
 			}else
 			{
 				printf("\nNO HAY MAS ESPACIO!!\n");
 			}
+			system("pause");
 			break;
 			case 2:
 
@@ -67,7 +70,7 @@ int main(void) {
 			{
 				ModifyEmployee(listEmployees,TAM);
 			}
-
+			system("pause");
 			break;
 			case 3:
 
@@ -76,9 +79,11 @@ int main(void) {
 				printf("\nPRIMERO INGRESE EMPLEADO\n");
 			}else
 			{
-			  removeEmployee(listEmployees,TAM);
+				printEmployees(listEmployees, TAM);
+				pedirEntero(&iDParaEliminar, "INGRESE EL ID PARA ELIMINAR ", "ERROR, ESE ID NO EXISTE,INGRESE EL ID PARA ELIMINAR ", 0, iD);
+				removeEmployee(listEmployees,TAM, iDParaEliminar);
 			}
-
+			system("pause");
 			break;
 			case 4:
 			if(AlreadyEnterEmployee==0)
@@ -86,12 +91,37 @@ int main(void) {
 				printf("\nPRIMERO INGRESE EMPLEADO\n");
 			}else
 			{
-			  OptionFour(listEmployees,TAM);
+				pedirEntero(&option, "Que desea mostrar? \n\n"
+						"1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector\n\n"
+						"2. Total y promedio de los salarios, y cuántos empleados superan el salario promedio\n\nElija opcion: ", "Error,Que desea mostrar? \n\n"
+						"1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector\n\n"
+						"2. Total y promedio de los salarios, y cuántos empleados superan el salario promedio\n\nElija opcion:  ", 1, 2);
+
+				switch(option)
+				{
+				case 1:
+						printf("\n____________________________\n");
+					    printf("\nELIJA COMO QUIERE ORDENAR EL EMPLEADO\n");
+					    printf("\n---------------------------------\n");
+					    printf("\n\n1.ASCENDENTE A-->Z\n\n2.DESCENDENTE Z--->A\n");
+					    printf("\nELIJA UNA OPCION: ");
+					    scanf("%d",&order);
+					sortEmployeeByName(listEmployees,TAM, order);
+					printEmployees(listEmployees, TAM);
+					break;
+				case 2:
+						OptionFour(listEmployees,TAM);
+					break;
+
+				}
+
 			}
 
+			system("pause");
 			break;
 			case 5:
-			printf("FINALIZADO");
+			printf("FINALIZADO\n");
+			system("pause");
 			break;
 
 

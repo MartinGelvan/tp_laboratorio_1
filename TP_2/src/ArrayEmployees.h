@@ -28,23 +28,21 @@ typedef struct
  *
  */
 void Menu();
-/** \brief add in a existing list of employees the values received as parameters in the first empty position
- *
- * \param aEmployee[] (list Employee)
- * \param int len
- * \return void
- *
- */
 
-void addEmployee(aEmployee[],int);
-/** \brief Order employees
+/**
+ * \brief add in a existing list of employees the values received as parameters in the first empty position
  *
- * \param aEmployee[] (list Employees)
- * \param int len
- * \return void
- *
+ * \param listEmployees []
+ * \param len int
+ * \param id int
+ * \param name[] char
+ * \param lastName[] char
+ * \param salary float
+ * \param sector int
+ * \return int Return (-1) if Error [Invalid length or NULL pointer or without free space] - (0) if Ok
  */
-void OrderEmployees(aEmployee[],int);
+void addEmployee(aEmployee listEmployees[],int len,int id, char name[],char	lastName[],float salary,int sector);
+
 /** \brief Only show one employee
  *
  * \param aEmployee (list Employees)
@@ -64,10 +62,12 @@ int SearchFree(aEmployee[],int);
  *
  * \param aEmployee[] (list Employee)
  * \param int len
- * \return void
+ * \param int id
+ * \return int Return (-1) if Error [Invalid length or NULL pointer or if can't
+		find a employee] - (0) if Ok
  *
  */
-void removeEmployee(aEmployee[],int);
+int removeEmployee(aEmployee listEmployees[],int len, int id);
 /** \brief
  *
  * \param aEmployee[]  (list Employee)
@@ -89,18 +89,20 @@ void ModifyEmployee(aEmployee[],int);
  * \param aEmployee[] (list Employee)
  * \param int len
  * \param int id
- * \return int
+ * \return int Return employee index position or (-1) if [Invalid length or NULL
+			pointer received or employee not found]
  *
  */
 int findEmployeeById(aEmployee[],int,int);
-/** \brief Sort the elements in the array of employees
+/** \brief Sort the elements in the array of employees and order
  *
  * \param aEmployee[] (list Employee)
  * \param int len
- * \return void
+ * \param int order
+ * \return int Return (-1) if Error [Invalid length or NULL pointer] - (0) if Ok
  *
  */
-void sortEmployeeByName(aEmployee[],int);
+int sortEmployeeByName(aEmployee listEmployees[],int len, int order);
 /** \brief Add up employee salaries
  *
  * \param aEmployee[] (list Employee)
@@ -117,7 +119,7 @@ float SumSalaries(aEmployee[],int);
  *
  */
 float AverageSalaries(aEmployee[],int);
-/** \brief
+/** \brief Amount employees loaded in the list
  *
  * \param aEmployee[] (list Employee)
  * \param int len
@@ -125,7 +127,7 @@ float AverageSalaries(aEmployee[],int);
  *
  */
 int AmountLoaded(aEmployee[],int);
-/** \brief
+/** \brief  Amount exceed average salary
  *
  * \param aEmployee[] (list Employee)
  * \param int len
@@ -133,7 +135,8 @@ int AmountLoaded(aEmployee[],int);
  *
  */
 int AmountExceedAverageSalary(aEmployee[],int);
-/** \brief To indicate that all position in the array are empty
+/** \brief To indicate that all position in the array are empty,this function put the flag (isEmpty)
+ * 		in TRUE in all position of the array
  *
  * \param aEmployee[] (list Employee)
  * \param int len
