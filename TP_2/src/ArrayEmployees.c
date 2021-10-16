@@ -293,7 +293,7 @@ int sortEmployeeByName(aEmployee listEmployees[],int len, int order)
 	int retorno=-1;
     int i;
     int bandera;
-    int nuevoLimite=len - 1;
+    int nuevoTam=len - 1;
     aEmployee auxEmployee;
 
 
@@ -305,7 +305,7 @@ int sortEmployeeByName(aEmployee listEmployees[],int len, int order)
 
 				bandera = 0;
 
-				for(i = 0; i < nuevoLimite; i++)
+				for(i = 0; i < nuevoTam; i++)
 				{
 					if(strcmp(listEmployees[i].lastName, listEmployees[i+1].lastName) >0)
 					{
@@ -333,10 +333,10 @@ int sortEmployeeByName(aEmployee listEmployees[],int len, int order)
         case 2:
         	do
 			{
-				nuevoLimite = len - 1;
+        		nuevoTam = len - 1;
 				bandera = 0;
 
-				for(i = 0; i < nuevoLimite; i++)
+				for(i = 0; i < nuevoTam; i++)
 				{
 					if(strcmp(listEmployees[i].lastName, listEmployees[i+1].lastName) <0)
 					{
