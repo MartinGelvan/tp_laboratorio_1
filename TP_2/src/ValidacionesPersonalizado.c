@@ -14,7 +14,7 @@
 #include <ctype.h>
 #include <string.h>
 #include "ValidacionesPersonalizado.h"
-
+#include "ctype.h"
 
 
 int validacion_Numero(char cadena[]) {
@@ -92,6 +92,15 @@ int validacion_Espacio(char* cadena)
 	}
 	return retorno;
 }
+
+void validacion_Minuscula(char* string)
+{
+	for (int i = 0; string[i] != '\0';i++)
+	{
+		string[i] = tolower(string[i]);
+	}
+}
+
 
 int esNumeroSimbolo(char* cadena)
 {

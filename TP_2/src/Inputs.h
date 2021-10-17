@@ -61,12 +61,5 @@ int pedirCaracter(char* caracter, char* mensaje);
  * @return devuelve si tuvo exito o no el pedido
  */
 int pedirConfirmacion(char* mensaje);
-/**
- * @fn void validar_Minuscula(char*)
- * @brief Pasa la cadena a minuscula
- *
- * @param string
- */
-void validar_Minuscula(char* string);
 
 #endif /* INPUTS_H_ */

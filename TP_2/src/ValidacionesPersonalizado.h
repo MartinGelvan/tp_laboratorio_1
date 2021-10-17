@@ -45,6 +45,14 @@ int validacion_AlfaNumerica(char cadena[]);
 int validacion_Espacio(char* cadena);
 
 /**
+ * @fn void validar_Minuscula(char*)
+ * @brief Pasa la cadena a minuscula
+ *
+ * @param string
+ */
+void validacion_Minuscula(char* string);
+
+/**
  * @fn int esNumeroSimbolo(char*)
  * @brief valida si tiene o no simbolos
  *

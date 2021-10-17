@@ -13,6 +13,7 @@
 #include "ArrayEmployees.h"
 #include "inputs.h"
 #include "ValidacionesPersonalizado.h"
+
 void Menu()
 {
     printf("\n1.ALTAS\n2.MODIFICAR\n3.BAJA\n4.INFORMAR\n5.SALIR\n");
@@ -30,9 +31,9 @@ void addEmployee(aEmployee listEmployees[],int len,int id, char name[],char	last
     if(i!=-1)
     {
     	pedirCadena(name, "INGRESE NOMBRE: ","ERROR, REINGRESE NOMBRE (MAX 21 CARACTERES Y EN LETRAS): ", 21);
-    	validar_Minuscula(name);
+    	validacion_Minuscula(name);
     	pedirCadena(lastName, "INGRESE APELLIDO: ","ERROR, REINGRESE APELLIDO (MAX 21 CARACTERES Y EN LETRAS): ", 21);
-    	validar_Minuscula(lastName);
+    	validacion_Minuscula(lastName);
     	pedirFlotante(&salary,"INGRESE SALARIO: ","ERROR, REINGRESE SALARIO (10000-170000): ",10000, 170000);
     	pedirEntero(&sector, "INGRESE SECTOR: ","ERROR, REINGRESE SECTOR (1-1000): ",1, 1000);
 
@@ -130,7 +131,7 @@ void ModifyEmployee(aEmployee listEmployees[],int len)
             case 1:
 
             	pedirCadena(newName, "INGRESE NUEVO NOMBRE: ","ERROR, REINGRESE NOMBRE (MAX 21 CARACTERES): ", 21);
-            	validar_Minuscula(newName);
+            	validacion_Minuscula(newName);
             	pedirCadena(&confirm, "\n¿ESTAS SEGURO DE MODIFICAR EL NOMBRE?:\n","ERROR, REINGRESE LA OPCION (s / n): ", 1);
 
 
@@ -148,7 +149,7 @@ void ModifyEmployee(aEmployee listEmployees[],int len)
 
             case 2:
             	pedirCadena(newLastName, "INGRESE NUEVO APELLIDO: ","ERROR, REINGRESE APELLIDO (MAX 21 CARACTERES): ", 21);
-            	validar_Minuscula(newLastName);
+            	validacion_Minuscula(newLastName);
             	pedirCadena(&confirm, "\n¿ESTAS SEGURO DE MODIFICAR EL APELLIDO?:\n","ERROR, REINGRESE LA OPCION (s / n): ", 1);
 
 

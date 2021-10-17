@@ -1,6 +1,6 @@
 #include "Inputs.h"
 #include "ValidacionesPersonalizado.h"
-#include "ctype.h"
+
 int pedirEntero(int* entero, char* mensaje, char* mensajeError, int min, int max)
 {
 	int retorno = -1;
@@ -124,10 +124,3 @@ int pedirConfirmacion(char* mensaje)
 	return retorno;
 }
 
-void validar_Minuscula(char* string)
-{
-	for (int i = 0; string[i] != '\0';i++)
-	{
-		string[i] = tolower(string[i]);
-	}
-}
