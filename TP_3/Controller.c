@@ -25,6 +25,8 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 		if(pFile!=NULL)
 		{
 			parser_EmployeeFromText(pFile ,pArrayListEmployee);
+
+
 			fclose(pFile);
 		}
 	}
@@ -65,18 +67,27 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
 	Employee* pEmployee=employee_new();
-	char auxId[40];
+	int id;
+	//char auxId[40];
 	char auxNombre[40];
-	char auxHoras[40];
-	char auxSueldo[40];
+	int auxHoras;
+	int auxSueldo;
+	//char auxHoras[40];
+	//char auxSueldo[40];
 
 	if(pArrayListEmployee!=NULL)
 	{
-
+		id=(ll_len(pArrayListEmployee)+1);
 		pedirCadena(auxNombre,"Ingrese su nombre (40 caracteres maximo): ", "Error, reingrese su nombre (40 caracteres maximo)", 40);
-		pedirCadena(auxHoras,"Ingrese las horas (1h minimo 40hs maximo):", "Error, reingrese su nombre (40 caracteres maximo)", 2);
-		pedirCadena(auxSueldo,"Ingrese el sueldo ($1000 minimo , $40000 maximo):", "Error, reingrese su sueldo ($1000 minimo , $40000 maximo):", 5);
-		pEmployee=employee_newParametros(auxId, auxNombre, auxHoras, auxSueldo);
+		pedirEntero(&auxHoras,"Ingrese las horas (1h minimo 40hs maximo):", "Error, reingrese las horas (40 caracteres maximo)",1,40);
+		pedirEntero(&auxSueldo,"Ingrese el sueldo ($1000 minimo , $40000 maximo):", "Error, reingrese su sueldo ($1000 minimo , $40000 maximo):", 1000,40000);
+		//pedirCadena(auxHoras,"Ingrese las horas (1h minimo 40hs maximo):", "Error, reingrese su nombre (40 caracteres maximo)", 40);
+		//pedirCadena(auxSueldo,"Ingrese el sueldo ($1000 minimo , $40000 maximo):", "Error, reingrese su sueldo ($1000 minimo , $40000 maximo):", 40000);
+		//pEmployee=employee_newParametros(auxId, auxNombre, auxHoras, auxSueldo);
+		employee_setId(pEmployee, id);
+		employee_setNombre(pEmployee, auxNombre);
+		employee_setHorasTrabajadas(pEmployee, auxHoras);
+		employee_setSueldo(pEmployee, auxSueldo);
 		ll_add(pArrayListEmployee, pEmployee);
 
 	}
@@ -107,7 +118,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
 	int auxId;
 	int index;
-	LinkedList* auxEmployee;
+	Employee* auxEmployee;
 	if(pArrayListEmployee!=NULL)
 	{
 		controller_ListEmployee(pArrayListEmployee);
@@ -118,9 +129,12 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
 		auxEmployee=ll_get(pArrayListEmployee, index);
 
-		if(pedirConfirmacion("\nIngrese 's' para confirmar el alta de la estadia: ")==0)
+		printf("%-10d %-10s %-5d %-5d", auxEmployee->id,auxEmployee->nombre,auxEmployee->horasTrabajadas,auxEmployee->sueldo);
+
+
+		if(pedirConfirmacion("\nIngrese 's' para confirmar el borrado del empleado: ")==0)
 			{
-				ll_remove(auxEmployee, index);
+				ll_remove(pArrayListEmployee, index);
 			}
 	}
     return 1;
@@ -143,7 +157,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 	char auxNombre[20];
 	Employee* auxEmployee;
 
-	printf("%-10s %-5s %-10s %-10s","ID","NOMBRE","HORAS","SUELDO");
+	printf("%-10s %-5s %-10s %-10s\n","ID","NOMBRE","HORAS","SUELDO");
 
 	if(pArrayListEmployee!=NULL)
 	{
@@ -152,11 +166,13 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 		for(i=0;i<tam;i++)
 		{
 			auxEmployee=ll_get(pArrayListEmployee, i);
-			employee_getId(auxEmployee, &auxId);
-			employee_getNombre(auxEmployee, auxNombre);
-			employee_getHorasTrabajadas(auxEmployee, &auxHoras);
-			employee_getSueldo(auxEmployee, &auxSueldo);
-			printf("%10d %5s %10d %10d",auxId,auxNombre,auxHoras,auxSueldo);
+			//employee_getId(auxEmployee, &auxId);
+			//employee_getNombre(auxEmployee, auxNombre);
+			//employee_getHorasTrabajadas(auxEmployee, &auxHoras);
+			//employee_getSueldo(auxEmployee, &auxSueldo);
+			//printf("%10d %5s %10d %10d",auxId,auxNombre,auxHoras,auxSueldo);
+			printf("%-10d %-5s %-10d %-10d\n",auxEmployee->id,auxEmployee->nombre,auxEmployee->horasTrabajadas,auxEmployee->sueldo);
+
 		}
 	}
 

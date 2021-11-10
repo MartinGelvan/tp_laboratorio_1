@@ -56,6 +56,8 @@ int main()
         {
             case 1:
                 controller_loadFromText("data.csv",listaEmpleados);
+
+
                 system("pause");
                 break;
             case 2:
