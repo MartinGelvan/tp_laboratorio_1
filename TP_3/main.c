@@ -25,6 +25,7 @@ int main()
 {
 	setbuf(stdout,NULL);
     int option = 10;
+    int exito;
 
 
     LinkedList* listaEmpleados = ll_newLinkedList();
@@ -55,13 +56,27 @@ int main()
         switch(option)
         {
             case 1:
-                controller_loadFromText("data.csv",listaEmpleados);
+                exito=controller_loadFromText("data.csv",listaEmpleados);
+                if(exito==1)
+                {
+                	printf("\nSe cargo en forma de texto con exito!\n");
+                }else
+                {
+                	printf("\nNo se logro cargar en forma de texto\n");
+                }
 
 
                 system("pause");
                 break;
             case 2:
-            	controller_loadFromBinary("data.csv" , listaEmpleados);
+            	exito=controller_loadFromBinary("data.csv" , listaEmpleados);
+            	if(exito==1)
+				{
+					printf("\nSe cargo en forma binaria con exito!\n");
+				}else
+				{
+					printf("\nNo se logro cargar en forma binaria\n");
+				}
 			break;
 
 			case 3:
@@ -69,7 +84,7 @@ int main()
 			break;
 
 			case 4:
-				//controller_editEmployee(LinkedList* pArrayListEmployee);
+				controller_editEmployee(listaEmpleados);
 			break;
 
 			case 5:
@@ -81,15 +96,30 @@ int main()
 			break;
 
 			case 7:
-				//controller_sortEmployee(LinkedList* pArrayListEmployee);
+				controller_sortEmployee(listaEmpleados);
 			break;
 
 			case 8:
-				controller_saveAsText("data.csv" , listaEmpleados);
+				exito=controller_saveAsText("data.csv" , listaEmpleados);
+				if(exito==1)
+				{
+					printf("\nSe guardo en forma de texto con exito!\n");
+				}else
+				{
+					printf("\nNo se logro guardar en forma de texto\n");
+				}
+
 			break;
 
 			case 9:
-				controller_saveAsBinary("data.csv" ,listaEmpleados );
+				exito=controller_saveAsBinary("data.csv" ,listaEmpleados );
+				if(exito==1)
+				{
+					printf("\nSe guardo en forma binaria con exito!\n");
+				}else
+				{
+					printf("\nNo se logro guardar en forma binaria\n");
+				}
 			break;
 
 			case 10:

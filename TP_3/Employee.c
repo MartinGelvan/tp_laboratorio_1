@@ -155,3 +155,122 @@ void employee_delete(Employee* this)
 	}
 }
 
+int employee_CompareById(void* employeeOne, void* employeeTwo)
+{
+	int comparacion=0;
+	Employee* empleadoUno;
+	Employee* empleadoDos;
+	int auxIdUno;
+	int auxIdDos;
+
+	if(employeeOne!=NULL && employeeTwo!=NULL)
+	{
+		empleadoUno=(Employee*)employeeOne;
+		empleadoDos=(Employee*)employeeTwo;
+
+		employee_getId(empleadoUno, &auxIdUno);
+		employee_getId(empleadoDos, &auxIdDos);
+
+		if(auxIdUno>auxIdDos)
+		{
+			comparacion=1;
+
+		}else
+		{
+			if(auxIdUno<auxIdDos)
+			{
+				comparacion=-1;
+			}
+		}
+	}
+
+	return comparacion;
+}
+
+int employee_CompareByName(void* employeeOne, void* employeeTwo)
+{
+
+	Employee* empleadoUno;
+	Employee* empleadoDos;
+	char auxNombreUno[31];
+	char auxNombreDos[31];
+
+	if(employeeOne!=NULL && employeeTwo!=NULL)
+	{
+		empleadoUno=(Employee*)employeeOne;
+		empleadoDos=(Employee*)employeeTwo;
+
+		employee_getNombre(empleadoUno, auxNombreUno);
+		employee_getNombre(empleadoDos, auxNombreDos);
+
+
+
+	}
+
+	return strcmp(auxNombreUno,auxNombreDos);
+}
+
+int employee_CompareBySueldo(void* employeeOne, void* employeeTwo)
+{
+	int comparacion=0;
+	Employee* empleadoUno;
+	Employee* empleadoDos;
+	int auxSueldoUno;
+	int auxSueldoDos;
+
+	if(employeeOne!=NULL && employeeTwo!=NULL)
+	{
+		empleadoUno=(Employee*)employeeOne;
+		empleadoDos=(Employee*)employeeTwo;
+
+		employee_getSueldo(empleadoUno, &auxSueldoUno);
+		employee_getSueldo(empleadoDos, &auxSueldoDos);
+
+		if(auxSueldoUno>auxSueldoDos)
+		{
+			comparacion=1;
+
+		}else
+		{
+			if(auxSueldoUno<auxSueldoDos)
+			{
+				comparacion=-1;
+			}
+		}
+	}
+
+	return comparacion;
+}
+
+int employee_CompareByHorasTrabajadas(void* employeeOne, void* employeeTwo)
+{
+	int comparacion=0;
+	Employee* empleadoUno;
+	Employee* empleadoDos;
+	int auxHorasUno;
+	int auxHorasDos;
+
+	if(employeeOne!=NULL && employeeTwo!=NULL)
+	{
+		empleadoUno=(Employee*)employeeOne;
+		empleadoDos=(Employee*)employeeTwo;
+
+		employee_getHorasTrabajadas(empleadoUno, &auxHorasUno);
+		employee_getHorasTrabajadas(empleadoDos, &auxHorasDos);
+
+		if(auxHorasUno>auxHorasDos)
+		{
+			comparacion=1;
+
+		}else
+		{
+			if(auxHorasUno<auxHorasDos)
+			{
+				comparacion=-1;
+			}
+		}
+	}
+
+	return comparacion;
+}
+
