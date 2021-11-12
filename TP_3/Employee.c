@@ -182,6 +182,9 @@ int employee_CompareById(void* employeeOne, void* employeeTwo)
 				comparacion=-1;
 			}
 		}
+
+		empleadoUno=NULL;
+		empleadoDos=NULL;
 	}
 
 	return comparacion;
@@ -189,11 +192,11 @@ int employee_CompareById(void* employeeOne, void* employeeTwo)
 
 int employee_CompareByName(void* employeeOne, void* employeeTwo)
 {
-
+	int retorno=-1;
 	Employee* empleadoUno;
 	Employee* empleadoDos;
-	char auxNombreUno[31];
-	char auxNombreDos[31];
+	char auxNombreUno[128];
+	char auxNombreDos[128];
 
 	if(employeeOne!=NULL && employeeTwo!=NULL)
 	{
@@ -203,11 +206,14 @@ int employee_CompareByName(void* employeeOne, void* employeeTwo)
 		employee_getNombre(empleadoUno, auxNombreUno);
 		employee_getNombre(empleadoDos, auxNombreDos);
 
+		retorno=strcmp(auxNombreUno,auxNombreDos);
 
+		empleadoUno=NULL;
+		empleadoDos=NULL;
 
 	}
 
-	return strcmp(auxNombreUno,auxNombreDos);
+	return retorno;
 }
 
 int employee_CompareBySueldo(void* employeeOne, void* employeeTwo)
@@ -237,6 +243,9 @@ int employee_CompareBySueldo(void* employeeOne, void* employeeTwo)
 				comparacion=-1;
 			}
 		}
+
+		empleadoUno=NULL;
+		empleadoDos=NULL;
 	}
 
 	return comparacion;
@@ -269,6 +278,9 @@ int employee_CompareByHorasTrabajadas(void* employeeOne, void* employeeTwo)
 				comparacion=-1;
 			}
 		}
+
+		empleadoUno=NULL;
+		empleadoDos=NULL;
 	}
 
 	return comparacion;

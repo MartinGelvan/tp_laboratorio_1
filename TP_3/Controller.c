@@ -25,10 +25,10 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 
 		if(pFile!=NULL)
 		{
-			parser_EmployeeFromText(pFile ,pArrayListEmployee);
-			fclose(pFile);
+			parser_EmployeeFromText(pFile ,pArrayListEmployee);;
 			exito=1;
 		}
+		fclose(pFile);
 	}
 
 	return exito;
@@ -54,9 +54,9 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 		if(pFile!=NULL)
 		{
 			parser_EmployeeFromBinary(pFile ,pArrayListEmployee);
-			fclose(pFile);
 			exito=1;
 		}
+		fclose(pFile);
 	}
 
 	return exito;
@@ -80,6 +80,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 	int auxSueldo;
 	//char auxHoras[40];
 	//char auxSueldo[40];
+	int exito=0;
 
 	if(pArrayListEmployee!=NULL)
 	{
@@ -95,10 +96,11 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 		employee_setHorasTrabajadas(pEmployee, auxHoras);
 		employee_setSueldo(pEmployee, auxSueldo);
 		ll_add(pArrayListEmployee, pEmployee);
+		exito=1;
 
 	}
 
-    return 1;
+    return exito;
 }
 
 /** \brief Modificar datos de empleado
@@ -117,12 +119,13 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 	int auxHoras;
 	int auxSueldo;
 	Employee* auxEmployee;
+	int exito=0;
 
 	if(pArrayListEmployee!=NULL)
 	{
 		controller_ListEmployee(pArrayListEmployee);
 
-		pedirEntero(&auxId, "Ingrese el ID del empleado a Modificar(1-2000): ", "Error,reingrese el ID del empleado a eliminar(1-2000): ", 1, 2000);
+		pedirEntero(&auxId, "Ingrese el ID del empleado a Modificar(1-2000): ", "Error,reingrese el ID del empleado a modificar(1-2000): ", 1, 2000);
 
 		index=controller_searchIdEmployee(pArrayListEmployee, auxId);
 
@@ -131,7 +134,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 		printf("%-10d %-10s %-5d %-5d", auxEmployee->id,auxEmployee->nombre,auxEmployee->horasTrabajadas,auxEmployee->sueldo);
 
 		do{
-			pedirEntero(&opcion, "¿Que desea modificar?\n"
+			pedirEntero(&opcion, "\n¿Que desea modificar?\n"
 					"1.Nombre\n"
 					"2.Horas trabajadas\n"
 					"3.Sueldo\n"
@@ -184,9 +187,9 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
 		}while(opcion==4);
 
-
+		exito=1;
 	}
-    return 1;
+    return exito;
 }
 
 /** \brief Baja de empleado
@@ -200,6 +203,8 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
 	int auxId;
 	int index;
+	int exito=0;
+
 	Employee* auxEmployee;
 	if(pArrayListEmployee!=NULL)
 	{
@@ -218,8 +223,10 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 			{
 				ll_remove(pArrayListEmployee, index);
 			}
+
+		exito=1;
 	}
-    return 1;
+    return exito;
 }
 
 /** \brief Listar empleados
@@ -238,6 +245,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 	int auxSueldo;
 	char auxNombre[20];
 	Employee* auxEmployee;
+	int exito=0;
 
 	printf("%-10s %-10s %-10s %-10s\n","ID","NOMBRE","HORAS","SUELDO");
 
@@ -247,7 +255,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 
 		for(i=0;i<tam;i++)
 		{
-			auxEmployee=ll_get(pArrayListEmployee, i);
+			auxEmployee=(Employee*)ll_get(pArrayListEmployee, i);
 			employee_getId(auxEmployee, &auxId);
 			employee_getNombre(auxEmployee, auxNombre);
 			employee_getHorasTrabajadas(auxEmployee, &auxHoras);
@@ -256,9 +264,11 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 			//printf("%-10d %-5s %-10d %-10d\n",auxEmployee->id,auxEmployee->nombre,auxEmployee->horasTrabajadas,auxEmployee->sueldo);
 
 		}
+
+		exito=1;
 	}
 
-    return 1;
+    return exito;
 }
 
 /** \brief Ordenar empleados
@@ -271,6 +281,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
 	int opcion;
+	int exito=0;
 
 	if(pArrayListEmployee!=NULL)
 	{
@@ -331,9 +342,9 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 			break;
 		}
 
-
+		exito=1;
 	}
-    return 1;
+    return exito;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).
@@ -408,7 +419,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 
 			for(i=0;i<tam;i++)
 			{
-				employee=ll_get(pArrayListEmployee, i);
+				employee=(Employee*)ll_get(pArrayListEmployee, i);
 				fwrite(employee,sizeof(Employee),1,pFile);
 			}
 

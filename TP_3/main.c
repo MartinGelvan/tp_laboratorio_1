@@ -26,6 +26,8 @@ int main()
 	setbuf(stdout,NULL);
     int option = 10;
     int exito;
+    int banderaTexto=0;
+    int banderaBinario=0;
 
 
     LinkedList* listaEmpleados = ll_newLinkedList();
@@ -59,7 +61,8 @@ int main()
                 exito=controller_loadFromText("data.csv",listaEmpleados);
                 if(exito==1)
                 {
-                	printf("\nSe cargo en forma de texto con exito!\n");
+                	printf("\nSe cargo en forma de texto con exito!\n\n");
+                	banderaTexto=1;
                 }else
                 {
                 	printf("\nNo se logro cargar en forma de texto\n");
@@ -69,10 +72,11 @@ int main()
                 system("pause");
                 break;
             case 2:
-            	exito=controller_loadFromBinary("data.csv" , listaEmpleados);
+            	exito=controller_loadFromBinary("dataBinario.csv" , listaEmpleados);
             	if(exito==1)
 				{
-					printf("\nSe cargo en forma binaria con exito!\n");
+					printf("\nSe cargo en forma binaria con exito!\n\n");
+					banderaBinario=1;
 				}else
 				{
 					printf("\nNo se logro cargar en forma binaria\n");
@@ -80,46 +84,139 @@ int main()
 			break;
 
 			case 3:
-				controller_addEmployee(listaEmpleados);
+				if(banderaTexto==1 || banderaBinario==1)
+				{
+					exito=controller_addEmployee(listaEmpleados);
+					if(exito==1)
+					{
+						printf("\nSe agrego un empleado con exito!\n\n");
+					}else
+					{
+						printf("\nNo se logro agregar un empleado\n");
+					}
+				}else
+				{
+					printf("\nIngrese la opcion 1 primero o la 2\n");
+				}
+
 			break;
 
 			case 4:
-				controller_editEmployee(listaEmpleados);
+				if(banderaTexto==1 || banderaBinario==1)
+				{
+					controller_editEmployee(listaEmpleados);
+					if(exito==1)
+					{
+						printf("\nSe modifico con exito!\n\n");
+						banderaBinario=1;
+					}else
+					{
+						printf("\nNo se pudo modificar\n");
+					}
+
+				}else
+				{
+					printf("\nIngrese la opcion 1 primero o la 2\n");
+				}
+
 			break;
 
 			case 5:
-				controller_removeEmployee(listaEmpleados);
+				if(banderaTexto==1 || banderaBinario==1)
+				{
+					controller_removeEmployee(listaEmpleados);
+					if(exito==1)
+					{
+						printf("\nSe elimino con exito!\n\n");
+						banderaBinario=1;
+					}else
+					{
+						printf("\nNo se logro eliminar\n");
+					}
+
+				}else
+				{
+					printf("\nIngrese la opcion 1 primero o la 2\n");
+				}
+
 			break;
 
 			case 6:
-				controller_ListEmployee(listaEmpleados);
+				if(banderaTexto==1 || banderaBinario==1)
+				{
+					controller_ListEmployee(listaEmpleados);
+					if(exito==1)
+					{
+						printf("\nSe mostro la lista con exito!\n\n");
+						banderaBinario=1;
+					}else
+					{
+						printf("\nNo se logro mostrar la lista\n");
+					}
+				}else
+				{
+					printf("\nIngrese la opcion 1 primero o la 2\n");
+				}
+
 			break;
 
 			case 7:
-				controller_sortEmployee(listaEmpleados);
+				if(banderaTexto==1 || banderaBinario==1)
+				{
+					controller_sortEmployee(listaEmpleados);
+					if(exito==1)
+					{
+						printf("\nSe ordeno con exito!\n\n");
+						banderaBinario=1;
+					}else
+					{
+						printf("\nNo se logro ordenar\n");
+					}
+				}else
+				{
+					printf("\nIngrese la opcion 1 primero o la 2\n");
+				}
+
 			break;
 
 			case 8:
-				exito=controller_saveAsText("data.csv" , listaEmpleados);
-				if(exito==1)
+				if(banderaTexto==1 || banderaBinario==1)
 				{
-					printf("\nSe guardo en forma de texto con exito!\n");
+					exito=controller_saveAsText("data.csv" , listaEmpleados);
+					if(exito==1)
+					{
+						printf("\nSe guardo en forma de texto con exito!\n\n");
+					}else
+					{
+						printf("\nNo se logro guardar en forma de texto\n");
+					}
+
 				}else
 				{
-					printf("\nNo se logro guardar en forma de texto\n");
+					printf("\nIngrese la opcion 1 primero o la 2\n");
 				}
+
 
 			break;
 
 			case 9:
-				exito=controller_saveAsBinary("data.csv" ,listaEmpleados );
-				if(exito==1)
+
+				if(banderaTexto==1 || banderaBinario==1)
 				{
-					printf("\nSe guardo en forma binaria con exito!\n");
+					exito=controller_saveAsBinary("dataBinario.csv" ,listaEmpleados );
+					if(exito==1)
+					{
+						printf("\nSe guardo en forma binaria con exito!\n\n");
+					}else
+					{
+						printf("\nNo se logro guardar en forma binaria\n");
+					}
+
 				}else
 				{
-					printf("\nNo se logro guardar en forma binaria\n");
+					printf("\nIngrese la opcion 1 primero o la 2\n");
 				}
+
 			break;
 
 			case 10:
