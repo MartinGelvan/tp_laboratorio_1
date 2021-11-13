@@ -81,6 +81,7 @@ int main()
 				{
 					printf("\nNo se logro cargar en forma binaria\n");
 				}
+            	system("pause");
 			break;
 
 			case 3:
@@ -98,13 +99,13 @@ int main()
 				{
 					printf("\nIngrese la opcion 1 primero o la 2\n");
 				}
-
+				system("pause");
 			break;
 
 			case 4:
 				if(banderaTexto==1 || banderaBinario==1)
 				{
-					controller_editEmployee(listaEmpleados);
+					exito=controller_editEmployee(listaEmpleados);
 					if(exito==1)
 					{
 						printf("\nSe modifico con exito!\n\n");
@@ -118,13 +119,13 @@ int main()
 				{
 					printf("\nIngrese la opcion 1 primero o la 2\n");
 				}
-
+				system("pause");
 			break;
 
 			case 5:
 				if(banderaTexto==1 || banderaBinario==1)
 				{
-					controller_removeEmployee(listaEmpleados);
+					exito=controller_removeEmployee(listaEmpleados);
 					if(exito==1)
 					{
 						printf("\nSe elimino con exito!\n\n");
@@ -138,13 +139,13 @@ int main()
 				{
 					printf("\nIngrese la opcion 1 primero o la 2\n");
 				}
-
+				system("pause");
 			break;
 
 			case 6:
 				if(banderaTexto==1 || banderaBinario==1)
 				{
-					controller_ListEmployee(listaEmpleados);
+					exito=controller_ListEmployee(listaEmpleados);
 					if(exito==1)
 					{
 						printf("\nSe mostro la lista con exito!\n\n");
@@ -157,13 +158,13 @@ int main()
 				{
 					printf("\nIngrese la opcion 1 primero o la 2\n");
 				}
-
+				system("pause");
 			break;
 
 			case 7:
 				if(banderaTexto==1 || banderaBinario==1)
 				{
-					controller_sortEmployee(listaEmpleados);
+					exito=controller_sortEmployee(listaEmpleados);
 					if(exito==1)
 					{
 						printf("\nSe ordeno con exito!\n\n");
@@ -176,7 +177,7 @@ int main()
 				{
 					printf("\nIngrese la opcion 1 primero o la 2\n");
 				}
-
+				system("pause");
 			break;
 
 			case 8:
@@ -196,7 +197,7 @@ int main()
 					printf("\nIngrese la opcion 1 primero o la 2\n");
 				}
 
-
+				system("pause");
 			break;
 
 			case 9:
@@ -216,11 +217,12 @@ int main()
 				{
 					printf("\nIngrese la opcion 1 primero o la 2\n");
 				}
-
+				system("pause");
 			break;
 
 			case 10:
 					printf("\nFinalizado\n");
+
 			break;
         }
     }while(option != 10);
