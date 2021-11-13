@@ -127,7 +127,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
 		pedirEntero(&auxId, "Ingrese el ID del empleado a Modificar(1-2000): ", "Error,reingrese el ID del empleado a modificar(1-2000): ", 1, 2000);
 
-		index=controller_searchIdEmployee(pArrayListEmployee, auxId);
+		index=employee_searchIdEmployee(pArrayListEmployee, auxId);
 
 		auxEmployee=ll_get(pArrayListEmployee, index);
 
@@ -212,7 +212,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 
 		pedirEntero(&auxId, "Ingrese el ID del empleado a eliminar(1-2000): ", "Error,reingrese el ID del empleado a eliminar(1-2000): ", 1, 2000);
 
-		index=controller_searchIdEmployee(pArrayListEmployee, auxId);
+		index=employee_searchIdEmployee(pArrayListEmployee, auxId);
 
 		auxEmployee=ll_get(pArrayListEmployee, index);
 
@@ -430,34 +430,5 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 
 	return exito;
 	//return 1;
-}
-
-int controller_searchIdEmployee(LinkedList* this, int auxId)
-{
-	int tam;
-	int i;
-	Employee* auxEmployee;
-	int idEmployee;
-	int index=-1;
-
-	if(this!=NULL)
-	{
-		tam=ll_len(this);
-
-		for(i=0;i<tam;i++)
-		{
-			auxEmployee=(Employee*)ll_get(this,i);
-			idEmployee=auxEmployee->id;
-			employee_getId(auxEmployee, &idEmployee);
-
-			if(auxId==idEmployee)
-			{
-				index=i;
-				break;
-			}
-		}
-	}
-
-	return index;
 }
 

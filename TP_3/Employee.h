@@ -1,5 +1,7 @@
 #ifndef employee_H_INCLUDED
 #define employee_H_INCLUDED
+#include "LinkedList.h"
+
 typedef struct
 {
     int id;
@@ -30,4 +32,6 @@ int employee_CompareById(void* employeeOne, void* employeeTwo);
 int employee_CompareByName(void* employeeOne, void* employeeTwo);
 int employee_CompareBySueldo(void* employeeOne, void* employeeTwo);
 int employee_CompareByHorasTrabajadas(void* employeeOne, void* employeeTwo);
+
+int employee_searchIdEmployee(LinkedList* this, int auxId);
 #endif // employee_H_INCLUDED
