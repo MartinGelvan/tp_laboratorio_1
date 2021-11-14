@@ -441,4 +441,33 @@ int employee_searchIdEmployee(LinkedList* this, int auxId)
 	return index;
 }
 
+/**
+ * @fn int employee_ultimoId(LinkedList*)
+ * @brief  Me trae el ultimo id de la lista de empleados
+ *
+ * @param this Algo de tipo LinkedList
+ * @return Me retorna el ultimo id
+ */
+int employee_ultimoId(LinkedList* this)
+{
+	int tam;
+	int i;
+	int ultimoId=-1;
+	Employee* employee;
+
+	if(this!=NULL)
+	{
+		tam=ll_len(this);
+		for(i=0;i<tam;i++)
+		{
+			employee=ll_get(this, i);
+			if(employee!=NULL)
+			{
+				employee_getId(employee, &ultimoId);
+			}
+		}
+	}
+
+	return ultimoId;
+}
 

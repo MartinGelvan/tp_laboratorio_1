@@ -84,7 +84,8 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 
 	if(pArrayListEmployee!=NULL)
 	{
-		id=(ll_len(pArrayListEmployee)+1);
+
+		id=(employee_ultimoId(pArrayListEmployee)+1);
 		pedirCadena(auxNombre,"Ingrese su nombre (40 caracteres maximo): ", "Error, reingrese su nombre (40 caracteres maximo)", 40);
 		pedirEntero(&auxHoras,"Ingrese las horas (1h minimo 40hs maximo):", "Error, reingrese las horas (40 caracteres maximo)",1,40);
 		pedirEntero(&auxSueldo,"Ingrese el sueldo ($1000 minimo , $40000 maximo):", "Error, reingrese su sueldo ($1000 minimo , $40000 maximo):", 1000,40000);

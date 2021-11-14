@@ -34,4 +34,5 @@ int employee_CompareBySueldo(void* employeeOne, void* employeeTwo);
 int employee_CompareByHorasTrabajadas(void* employeeOne, void* employeeTwo);
 
 int employee_searchIdEmployee(LinkedList* this, int auxId);
+int employee_ultimoId(LinkedList* this);
 #endif // employee_H_INCLUDED
