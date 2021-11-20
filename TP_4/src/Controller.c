@@ -157,6 +157,10 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 						if(pedirConfirmacion("\nIngrese 's' para confirmar la modificacion del empleado: ")==0)
 						{
 							employee_setNombre(auxEmployee,auxNombre );
+							printf("\nSe modifico con exito!\n");
+						}else
+						{
+							printf("\nSe cancelo la modificacion\n");
 						}
 
 				break;
@@ -168,6 +172,10 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 					if(pedirConfirmacion("\nIngrese 's' para confirmar la modificacion del empleado: ")==0)
 					{
 						employee_setHorasTrabajadas(auxEmployee,auxHoras );
+						printf("\nSe modifico con exito!\n");
+					}else
+					{
+						printf("\nSe cancelo la modificacion\n");
 					}
 				break;
 
@@ -178,6 +186,10 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 					if(pedirConfirmacion("\nIngrese 's' para confirmar la modificacion del empleado: ")==0)
 					{
 						employee_setSueldo(auxEmployee,auxSueldo );
+						printf("\nSe modifico con exito!\n");
+					}else
+					{
+						printf("\nSe cancelo la modificacion\n");
 					}
 				break;
 

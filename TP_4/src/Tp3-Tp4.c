@@ -106,14 +106,8 @@ int main()
 				if(banderaTexto==1 || banderaBinario==1)
 				{
 					exito=controller_editEmployee(listaEmpleados);
-					if(exito==1)
-					{
-						printf("\nSe modifico con exito!\n\n");
-						banderaBinario=1;
-					}else
-					{
-						printf("\nNo se pudo modificar\n");
-					}
+					banderaBinario=1;
+
 
 				}else
 				{
@@ -125,14 +119,7 @@ int main()
 			case 5:
 				if(banderaTexto==1 || banderaBinario==1)
 				{
-					exito=controller_removeEmployee(listaEmpleados);
-					if(exito==1)
-					{
-						banderaBinario=1;
-					}else
-					{
-						printf("\nNo se logro eliminar\n");
-					}
+					controller_removeEmployee(listaEmpleados);
 
 				}else
 				{
