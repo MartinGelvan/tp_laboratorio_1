@@ -11,7 +11,7 @@
 #include<string.h>
 #define TAM 1000
 #include "ArrayEmployees.h"
-#include "inputs.h"
+#include "Inputs.h"
 #include "ValidacionesPersonalizado.h"
 
 void Menu()
